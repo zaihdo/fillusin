@@ -1,3 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
+"use client";
+
+import React from 'react';
+
+import { Heading, Text, Flex, Button, Grid, Icon } from '@/once-ui/components';
+import Link from 'next/link';
 import React from "react";
 import Image from "next/image";
 import {
@@ -77,9 +85,51 @@ export default async function Home() {
 				maxWidth={100}
 				direction="column"
 				alignItems="center"
+				minHeight={1}
+				flex={1}
+				as="section"
+				maxWidth={64}>
+				<Flex
+					style={{zIndex: '1', width: '95%'}}
+					position="relative"
+					// background="accent-medium"
+					// border="neutral-medium"
+					// borderStyle="solid-1"
+					// radius="l"
+					paddingX="24"
+					paddingY="8"
+					marginBottom="xs"
+					alignItems='center'
+					justifyContent='center'
+					>
+					<Heading
+						variant="display-strong-s"
+						onBackground="neutral-strong">
+						What is FreeGazans?
+					</Heading>
+				</Flex>
+				<Flex
+					style={{zIndex: '1', width: '95%'}}
+					position="relative"
+					background="accent-medium"
+					border="neutral-medium"
+					borderStyle="solid-1"
+					radius="l"
+					paddingX="24"
+					paddingY="16"
+					marginBottom="xs">
+					<Text
+						onBackground="neutral-medium">
+						As the bombs rain down, Gazans are desperately trying to evacuate through the only escape route i.e. the Rafah border crossing. Although
+						it is now closed, once open again, the Egyptians are charging our brothers and sisters $5000 per person just to cross through. FreeGazans was created
+						to have a centralised place to find the gofundme or other donation links of vetted individuals and families in Gaza. Links have been sourced directly 
+						from the individuals who can be contacted via LinkedIn.
+					</Text>
+				</Flex>
 				flex={1}>
 				<Flex
 					as="main"
+					padding="m"
 					direction="column"
 					justifyContent="center"
 					fillWidth
