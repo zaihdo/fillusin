@@ -410,10 +410,10 @@ export default async function Home() {
 				<Flex gap="12">
 					<Button
 						href="https://github.com/once-ui-system/nextjs-starter"
-						prefixIcon="github"
+						prefixIcon="linkedin"
 						size="s"
 						variant="tertiary">
-						GitHub
+						linkedIn
 					</Button>
 					<Button
 						href="https://discord.com/invite/5EyAQ4eNdS"

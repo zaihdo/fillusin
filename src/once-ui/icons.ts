@@ -29,6 +29,7 @@ import {
 	FaTiktok,
 	FaTwitter,
 	FaYoutube
+	FaLinkedinIn
 } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
@@ -56,5 +57,6 @@ export const iconLibrary: Record<string, IconType> = {
 	youtube: FaYoutube,
 	arrowUpRight: HiArrowUpRight,
 	minus: HiMiniMinus,
-	plus: HiMiniPlus,
+	plus: HiMiniPlus,,
+	linkedin: FaLinkedinIn
 };
