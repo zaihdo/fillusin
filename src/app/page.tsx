@@ -103,27 +103,28 @@ export default async function Home() {
 					justifyContent='center'
 					>
 					<Heading
-						variant="display-strong-s"
+						variant="display-strong-l"
 						onBackground="neutral-strong">
-						What is FreeGazans?
+						Free Gazans
 					</Heading>
 				</Flex>
 				<Flex
 					style={{zIndex: '1', width: '95%'}}
 					position="relative"
-					background="accent-medium"
+					background="surface"
 					border="neutral-medium"
 					borderStyle="solid-1"
-					radius="l"
+					radius="xl-8"
 					paddingX="24"
 					paddingY="16"
 					marginBottom="xs">
 					<Text
-						onBackground="neutral-medium">
+						onSolid='accent-weak'
+						>
 						As the bombs rain down, Gazans are desperately trying to evacuate through the only escape route i.e. the Rafah border crossing. Although
 						it is now closed, once open again, the Egyptians are charging our brothers and sisters $5000 per person just to cross through. FreeGazans was created
 						to have a centralised place to find the gofundme or other donation links of vetted individuals and families in Gaza. Links have been sourced directly 
-						from the individuals who can be contacted via LinkedIn.
+						from the individuals.
 					</Text>
 				</Flex>
 				flex={1}>
@@ -409,18 +410,11 @@ export default async function Home() {
 				</Text>
 				<Flex gap="12">
 					<Button
-						href="https://github.com/once-ui-system/nextjs-starter"
+						href="https://www.linkedin.com/in/zaidhimran/"
 						prefixIcon="linkedin"
 						size="s"
 						variant="tertiary">
-						linkedIn
-					</Button>
-					<Button
-						href="https://discord.com/invite/5EyAQ4eNdS"
-						prefixIcon="discord"
-						size="s"
-						variant="tertiary">
-						Discord
+						LinkedIn
 					</Button>
 				</Flex>
 			</Flex>
