@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { forwardRef } from 'react';
 
@@ -76,7 +76,6 @@ const Avatar: React.FC<AvatarProps> = forwardRef<HTMLDivElement, AvatarProps>(({
         if (src) {
             return (
                 <SmartImage
-                    radius="full"
                     src={src}
                     fill
                     alt="Avatar"
@@ -104,11 +103,15 @@ const Avatar: React.FC<AvatarProps> = forwardRef<HTMLDivElement, AvatarProps>(({
     return (
         <Flex
             ref={ref}
-            role="img"
             position="relative"
-            justifyContent="center" alignItems="center"
-            radius="full" border="neutral-strong" borderStyle="solid-1" background="surface"
+            justifyContent="center"
+            alignItems="center"
+            radius="full"
+            border="neutral-strong"
+            borderStyle="solid-1"
+            background="surface"
             style={style}
+            role="img"
             className={`${styles.avatar} ${styles[size]} ${className || ''}`}>
             {renderContent()}
             {statusIndicator && (
@@ -122,7 +125,7 @@ const Avatar: React.FC<AvatarProps> = forwardRef<HTMLDivElement, AvatarProps>(({
     );
 });
 
-Avatar.displayName = 'Avatar';
+Avatar.displayName = "Avatar";
 
 export { Avatar };
 export type { AvatarProps };

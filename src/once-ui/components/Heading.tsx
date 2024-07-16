@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { ElementType, ComponentPropsWithoutRef } from 'react';
+import React, { ElementType, ComponentPropsWithoutRef, CSSProperties } from 'react';
 import classNames from 'classnames';
 
 import { TextProps, CommonProps, SpacingProps } from '../interfaces'
@@ -16,7 +16,6 @@ const Heading = <T extends ElementType = 'h1'>({
     onBackground,
     onSolid,
     align,
-    wrap,
     padding,
     paddingLeft,
     paddingRight,
@@ -32,7 +31,6 @@ const Heading = <T extends ElementType = 'h1'>({
     marginX,
     marginY,
     children,
-    style,
     className,
     ...props
 }: HeadingProps<T>) => {
@@ -91,16 +89,20 @@ const Heading = <T extends ElementType = 'h1'>({
         generateClassName('my', marginY),
     );
 
+    const style: CSSProperties = {
+        textAlign: align,
+    };
+
     return (
         <Component
             className={combinedClasses}
-            style={{ textAlign: align, textWrap: wrap, ...style }}
+            style={style}
             {...props}>
             {children}
         </Component>
     );
 };
 
-Heading.displayName = 'Heading';
+Heading.displayName = "Heading";
 
 export { Heading };

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { ReactNode, useEffect, useCallback, useRef, forwardRef, useState } from 'react';
+import React, { ReactNode, useEffect, useCallback, useRef, forwardRef } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import { Flex, Heading, IconButton, Button, ButtonProps, Text } from '.';
+import { Flex, Heading, IconButton, Button, ButtonProps } from '.';
 import styles from './Dialog.module.scss';
 
 interface DialogButtonProps extends Partial<ButtonProps> {
@@ -14,8 +14,7 @@ interface DialogButtonProps extends Partial<ButtonProps> {
 interface DialogProps {
     isOpen: boolean;
     onClose: () => void;
-    title: ReactNode;
-    description?: ReactNode;
+    title: string;
     children: ReactNode;
     primaryButtonProps?: DialogButtonProps;
     secondaryButtonProps?: DialogButtonProps;
@@ -28,7 +27,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
     isOpen,
     onClose,
     title,
-    description,
     children,
     primaryButtonProps,
     secondaryButtonProps,
@@ -37,19 +35,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
     className
 }, ref) => {
     const dialogRef = useRef<HTMLDivElement>(null);
-    const [isVisible, setIsVisible] = useState(isOpen);
-    const [isAnimating, setIsAnimating] = useState(false);
-
-    useEffect(() => {
-        if (isOpen) {
-            setIsVisible(true);
-            setTimeout(() => setIsAnimating(true), 10);
-        } else {
-            setIsAnimating(false);
-            const timeout = setTimeout(() => setIsVisible(false), 300);
-            return () => clearTimeout(timeout);
-        }
-    }, [isOpen]);
 
     const handleKeyDown = useCallback((event: KeyboardEvent) => {
         if (event.key === 'Escape') {
@@ -99,88 +84,74 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
         }
     }, [isOpen]);
 
-    if (!isVisible) return null;
+    if (!isOpen) return null;
 
     return ReactDOM.createPortal(
         <Flex
             ref={ref}
-            className={classNames(styles.overlay, className, { [styles.open]: isAnimating })}
+            className={classNames(styles.overlay, className)}
             style={style}
             justifyContent="center"
             alignItems="center"
-            padding="l"
+            alpha="neutral-medium"
             role="dialog"
             aria-modal="true"
             aria-labelledby="dialog-title">
             <Flex
-                style={{ maxHeight: '100%' }}
-                className={classNames(styles.dialog, { [styles.open]: isAnimating })}
+                className={styles.dialog}
                 ref={dialogRef}
                 fillWidth
-                radius="xl"
+                maxWidth={40}
+                radius="l"
                 border="neutral-medium"
                 borderStyle="solid-1"
                 background="neutral-weak"
                 direction="column">
                 <Flex
                     as="header"
-                    direction="column"
-                    paddingX="24"
-                    paddingTop="24"
-                    paddingBottom="s"
-                    gap="4">
-                    <Flex
-                        fillWidth
-                        justifyContent="space-between"
-                        gap="8">
-                        <Heading
-                            id="dialog-title"
-                            variant="heading-strong-l">
-                            {title}
-                        </Heading>
-                        <IconButton
-                            icon="close"
-                            size="m"
-                            variant="tertiary"
-                            tooltip="Close"
-                            onClick={onClose} />
-                    </Flex>
-                    {description && (
-                        <Text
-                            variant="body-default-s"
-                            onBackground="neutral-weak">
-                            {description}
-                        </Text>
-                    )}
+                    justifyContent="space-between"
+                    alignItems="center"
+                    padding="24">
+                    <Heading
+                        id="dialog-title"
+                        variant="heading-strong-l">
+                        {title}
+                    </Heading>
+                    <IconButton
+                        icon="close"
+                        size="m"
+                        variant="tertiary"
+                        tooltip="Close"
+                        onClick={onClose}/>
                 </Flex>
                 <Flex
                     as="section"
-                    paddingX="24" paddingBottom="24"
-                    overflowY="auto"
-                    direction="column">
+                    padding="24">
                     {children}
                 </Flex>
                 {(primaryButtonProps || secondaryButtonProps || dangerButtonProps) && (
                     <Flex
-                        style={{
-                            borderTop: '1px solid var(--neutral-border-medium)'
-                        }}
                         as="footer"
                         justifyContent="space-between"
-                        padding="12">
-                            {dangerButtonProps ? (
-                                <Button
-                                    {...dangerButtonProps}/>
-                            ) : <div/>
-                        }
+                        padding="24">
+                        {dangerButtonProps && (
+                            <Button
+                                {...dangerButtonProps}
+                                variant='danger'
+                                size='m'/>
+                        )}
                         <Flex gap="8">
                             {secondaryButtonProps && (
                                 <Button
-                                    {...secondaryButtonProps}/>
+                                    {...secondaryButtonProps}
+                                    variant='secondary'
+                                    size='m'/>
                             )}
                             {primaryButtonProps && (
                                 <Button
-                                    {...primaryButtonProps}/>
+                                    {...primaryButtonProps}
+                                    variant='primary'
+                                    size='m'/>
                             )}
                         </Flex>
                     </Flex>
@@ -191,6 +162,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
     );
 });
 
-Dialog.displayName = 'Dialog';
+Dialog.displayName = "Dialog";
 
 export { Dialog };

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect, forwardRef, InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
@@ -8,10 +8,7 @@ import styles from './Input.module.scss';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     id: string;
     label: string;
-    height?: 's' | 'm';
-    error?: React.ReactNode;
-    description?: React.ReactNode;
-    radius?: string;
+    error?: string;
     className?: string;
     hasPrefix?: React.ReactNode;
     hasSuffix?: React.ReactNode;
@@ -21,10 +18,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input = forwardRef<HTMLInputElement, InputProps>(({
     id,
     label,
-    height = 'm',
     error,
-    description,
-    radius,
     className,
     hasPrefix,
     hasSuffix,
@@ -44,7 +38,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         setIsFocused(false);
-        if (event.target.value) {
+        if (props.value || event.target.value) {
             setIsFilled(true);
         } else {
             setIsFilled(false);
@@ -53,7 +47,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
     };
 
     useEffect(() => {
-        setIsFilled(!!props.value);
+        if (props.value) {
+            setIsFilled(true);
+        }
     }, [props.value]);
 
     const inputClassNames = classNames(styles.input, 'font-body', 'font-default', 'font-m', {
@@ -67,8 +63,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
 
     return (
         <div className={classNames(styles.wrapper, className, { [styles.error]: error })}>
-            <div className={classNames(styles.base, { [styles.s]: height === 's'}, { [styles.m]: height === 'm'})}
-                style={{borderRadius: radius}}>
+            <div className={styles.base}>
                 { hasPrefix && (
                     <Flex
                         paddingLeft="12"
@@ -93,7 +88,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
                             as="label"
                             variant="label-default-m"
                             htmlFor={id}
-                            className={classNames(styles.label, styles.inputLabel, {
+                            className={classNames(styles.label, {
                                 [styles.floating]: isFocused || isFilled,
                             })}>
                             {label}
@@ -121,17 +116,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
                         variant="body-default-s"
                         onBackground="danger-weak">
                         {error}
-                    </Text>
-                </Flex>
-            )}
-            { description && (
-                <Flex paddingX="16">
-                    <Text
-                        as="span"
-                        id={`${id}-description`}
-                        variant="body-default-s"
-                        onBackground="neutral-weak">
-                        {description}
                     </Text>
                 </Flex>
             )}

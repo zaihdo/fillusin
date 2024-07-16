@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
@@ -11,7 +11,6 @@ interface ScrollerProps {
     contained?: boolean;
     className?: string;
     style?: React.CSSProperties;
-    [key: string]: any;
 }
 
 const Scroller: React.FC<ScrollerProps> = ({
@@ -76,7 +75,8 @@ const Scroller: React.FC<ScrollerProps> = ({
                 overflowX: "hidden",
                 overflowY: "hidden",
             })}
-            style={style}>
+            style={style}
+            {...props}>
             {showPrevButton && (
                 <div className={classNames(styles.scrollMaskContainer, styles.scrollMaskPrev)}>
                     <div className={styles.scrollMask}></div>
@@ -95,8 +95,7 @@ const Scroller: React.FC<ScrollerProps> = ({
                 className={classNames(styles.scroller, {
                     [styles.row]: direction === 'row',
                     [styles.column]: direction === 'column',
-                })}
-                {...props}>
+                })}>
                 {children}
             </Flex>
             {showNextButton && (

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
@@ -24,7 +24,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({
             style={{ whiteSpace: 'nowrap', userSelect: 'none' }}
             gap="4"
             zIndex={1}
-            background="surface"
+            background="neutral-medium"
             paddingY="4"
             paddingX="8"
             radius="s"
@@ -47,6 +47,6 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({
     );
 });
 
-Tooltip.displayName = 'Tooltip';
+Tooltip.displayName = "Tooltip";
 
 export { Tooltip };

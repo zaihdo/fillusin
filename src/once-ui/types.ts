@@ -59,8 +59,7 @@ export type TextType =
 | 'body' 
 | 'heading' 
 | 'display' 
-| 'label'
-| 'code';
+| 'label';
 
 export type TextWeight =
 | 'default'

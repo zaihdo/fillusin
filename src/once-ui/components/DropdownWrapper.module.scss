@@ -1,0 +1,6 @@
+.dropdown {
+    position: absolute;
+    top: calc(100% + var(--static-space-4));
+    z-index: 1;
+    width: 100%;
+}

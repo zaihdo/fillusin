@@ -8,6 +8,7 @@ interface SpinnerProps {
     ariaLabel?: string;
     className?: string;
     style?: React.CSSProperties;
+    ariaLabel?: string;
 }
 
 const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(({

@@ -4,7 +4,6 @@
     user-select: none;
     height: fit-content;
     width: fit-content;
-    transition: var(--transition-micro-medium);
 
     &.selected {
         background: var(--brand-alpha-medium);

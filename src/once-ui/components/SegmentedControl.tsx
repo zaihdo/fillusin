@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
+import classNames from 'classnames';
 import { Flex, ToggleButton, Scroller } from '.';
 
 interface ButtonOption {
-    label?: React.ReactNode;
-    value: string;
+    label?: string;
+    value?: string;
     prefixIcon?: string;
     suffixIcon?: string;
     className?: string;
@@ -13,42 +14,34 @@ interface ButtonOption {
 
 interface SegmentedControlProps {
     buttons: ButtonOption[];
-    onToggle: (selected: string) => void;
+    handleToggle: (selected: string) => void;
     defaultSelected?: string;
-    selected?: string;
     className?: string;
     style?: React.CSSProperties;
 }
 
 const SegmentedControl: React.FC<SegmentedControlProps> = ({
     buttons,
-    onToggle,
+    handleToggle,
     defaultSelected,
-    selected,
     className,
     style,
 }) => {
-    const [internalSelected, setInternalSelected] = useState<string>(() => {
-        if (selected !== undefined) return selected;
-        if (defaultSelected !== undefined) return defaultSelected;
-        return buttons[0]?.value || '';
-    });
+    const defaultIndex = buttons.findIndex(button => (button.value || button.label) === defaultSelected);
+    const [selectedIndex, setSelectedIndex] = useState<number>(defaultIndex !== -1 ? defaultIndex : 0);
 
     useEffect(() => {
-        if (selected !== undefined) {
-            setInternalSelected(selected);
+        if (buttons[selectedIndex]) {
+            handleToggle(buttons[selectedIndex].value || buttons[selectedIndex].label || '');
         }
-    }, [selected]);
+    }, [selectedIndex, buttons, handleToggle]);
 
-    const handleButtonClick = (clickedButton: ButtonOption) => {
-        const newSelected = clickedButton.value;
-        setInternalSelected(newSelected);
-        onToggle(newSelected);
+    const handleButtonClick = (index: number) => {
+        setSelectedIndex(index);
+        if (buttons[index]) {
+            handleToggle(buttons[index].value || buttons[index].label || '');
+        }
     };
-
-    const selectedIndex = buttons.findIndex(
-        button => button.value === internalSelected
-    );
 
     return (
         <Flex
@@ -56,42 +49,30 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
             minWidth={0}
             position="relative"
             className={className}
-            style={style}
-        >
+            style={style}>
             <Flex
                 fillWidth
                 position="relative"
                 overflowX="hidden"
-                overflowY="hidden"
-            >
-                <Scroller contained={true} direction="row">
-                    <Flex fillWidth gap="2">
-                        {buttons.map((button, index) => {
-                            let label: string | undefined;
-                            let children: React.ReactNode = undefined;
-
-                            if (typeof button.label === 'string') {
-                                label = button.label;
-                            } else {
-                                children = button.label;
-                            }
-
-                            return (
-                                <ToggleButton
-                                    key={button.value}
-                                    label={label}
-                                    value={button.value}
-                                    selected={index === selectedIndex}
-                                    onClick={() => handleButtonClick(button)}
-                                    prefixIcon={button.prefixIcon}
-                                    suffixIcon={button.suffixIcon}
-                                    width="fill"
-                                    aria-pressed={index === selectedIndex}
-                                >
-                                    {children}
-                                </ToggleButton>
-                            );
-                        })}
+                overflowY="hidden">
+                <Scroller
+                    contained={true}
+                    direction="row">
+                    <Flex
+                        fillWidth
+                        gap="2">
+                        {buttons.map((button, index) => (
+                            <ToggleButton
+                                key={button.value || button.label}
+                                label={button.label}
+                                value={button.value || button.label}
+                                selected={selectedIndex === index}
+                                onClick={() => handleButtonClick(index)}
+                                prefixIcon={button.prefixIcon}
+                                suffixIcon={button.suffixIcon}
+                                width="fill"
+                                aria-pressed={selectedIndex === index}/>
+                        ))}
                     </Flex>
                 </Scroller>
             </Flex>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { forwardRef} from 'react';
 import classNames from 'classnames';
@@ -9,7 +9,6 @@ interface SkeletonProps {
     shape: 'line' | 'circle' | 'block';
     width?: 'xl' | 'l' | 'm' | 's' | 'xs';
     height?: 'xl' | 'l' | 'm' | 's' | 'xs';
-    delay? : '1' | '2' | '3' | '4' | '5' | '6';
     style?: React.CSSProperties;
     className?: string;
 }
@@ -18,7 +17,6 @@ const Skeleton: React.FC<SkeletonProps> = forwardRef<HTMLDivElement, SkeletonPro
     shape = 'line',
     width,
     height,
-    delay,
     style,
     className
 }, ref) => {
@@ -27,16 +25,15 @@ const Skeleton: React.FC<SkeletonProps> = forwardRef<HTMLDivElement, SkeletonPro
             ref={ref}
             style={style}
             className={classNames(
-                styles.skeleton,
-                styles[shape],
-                width && styles['w-' + width],
-                height && styles['h-' + height],
-                delay && styles['delay-' + delay],
-                className
-            )}/>
+            styles.skeleton,
+            styles[shape],
+            width && styles['w-' + width],
+            height && styles['h-' + height],
+            className
+        )}/>
     );
 });
 
-Skeleton.displayName = 'Skeleton';
+Skeleton.displayName = "Skeleton";
 
 export { Skeleton };

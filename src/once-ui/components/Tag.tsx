@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { forwardRef, HTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
@@ -25,6 +25,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
     children,
     ...props
 }, ref) => {
+    const labelSize = size === 's' ? 'label-default-s' : 'label-default-s';
     const paddingSize = size === 's' ? '2' : '4';
 
     return (
@@ -36,12 +37,12 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
             className={classNames(styles.tag, styles[variant], styles[size], className)}
             {...props}>
             {prefixIcon && <Icon name={prefixIcon} size="xs" />}
-            <Flex style={{userSelect: 'none'}}
+            <Flex
                 paddingX={paddingSize}
                 alignItems="center">
                 <Text
                     as="span"
-                    variant="label-default-s">
+                    variant={labelSize}>
                     {label || children}
                 </Text>
             </Flex>
@@ -50,7 +51,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
     );
 });
 
-Tag.displayName = 'Tag';
+Tag.displayName = "Tag";
 
 export { Tag };
 export type { TagProps };
