@@ -1,39 +1,31 @@
 import { IconType } from 'react-icons';
 
 import {
-	HiChevronUp,
 	HiChevronDown,
 	HiChevronRight,
 	HiChevronLeft,
 	HiOutlineArrowPath,
 	HiCheck,
 	HiMiniQuestionMarkCircle,
-	HiMiniMinus,
-	HiMiniPlus,
 	HiMiniUser,
 	HiMiniXMark,
-	HiEyeDropper,
 	HiOutlineLink,
 	HiExclamationTriangle,
-	HiArrowUpRight,
 	HiInformationCircle,
 	HiExclamationCircle,
 	HiCheckCircle,
+	HiArrowUpRight,
+	HiMoon,
+	HiSun,
 } from "react-icons/hi2";
 
 import {
 	FaDiscord,
-	FaFacebook,
 	FaGithub,
-	FaInstagram,
-	FaTiktok,
-	FaTwitter,
-	FaYoutube
 	FaLinkedinIn
 } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
-	chevronUp: HiChevronUp,
     chevronDown: HiChevronDown,
 	chevronRight: HiChevronRight,
 	chevronLeft: HiChevronLeft,
@@ -44,19 +36,13 @@ export const iconLibrary: Record<string, IconType> = {
 	warningTriangle: HiExclamationTriangle,
 	errorCircle: HiExclamationCircle,
 	checkCircle: HiCheckCircle,
-	eyeDropper: HiEyeDropper,
 	person: HiMiniUser,
 	close: HiMiniXMark,
 	openLink: HiOutlineLink,
+	arrowUpRight: HiArrowUpRight,
+	moon: HiMoon,
+	sun: HiSun,
 	discord: FaDiscord,
 	github: FaGithub,
-	instagram: FaInstagram,
-	facebook: FaFacebook,
-	twitter: FaTwitter,
-	tiktok: FaTiktok,
-	youtube: FaYoutube,
-	arrowUpRight: HiArrowUpRight,
-	minus: HiMiniMinus,
-	plus: HiMiniPlus,,
 	linkedin: FaLinkedinIn
 };
