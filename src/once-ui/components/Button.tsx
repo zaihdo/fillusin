@@ -1,5 +1,3 @@
-'use client';
-
 import React, { ReactNode, forwardRef } from 'react';
 import Link from 'next/link';
 
@@ -42,13 +40,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(({
     ...props
 }, ref) => {
     const labelSize = size === 'l' ? 'font-l' : size === 'm' ? 'font-m' : 'font-s';
-    const iconSize = size === 'l' ? 'm' : size === 'm' ? 's' : 'xs';
+    const iconSize = size === 'l' ? 'm' : 's';
+
+    const hasContent = label ?? children;
 
     const content = (
         <>
-            {prefixIcon && !loading && <Icon name={prefixIcon} size={iconSize} />}
+            {prefixIcon && !loading && !hasContent && <Icon name={prefixIcon} size={iconSize} />}
             {loading && <Spinner size={size} />}
-            {label && <div className={`font-label font-strong ${styles.label} ${labelSize}`}>{label || children}</div>}
+            {hasContent && <div className={`font-label font-strong ${styles.label} ${labelSize} ${fillWidth ? styles.fillWidth : ''}`}>{label ?? children}</div>}
             {suffixIcon && <Icon name={suffixIcon} size={iconSize} />}
         </>
     );

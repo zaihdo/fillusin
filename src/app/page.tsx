@@ -413,8 +413,8 @@ export default async function Home() {
 						href="https://www.linkedin.com/in/zaidhimran/"
 						prefixIcon="linkedin"
 						size="s"
-						variant="tertiary">
-						LinkedIn
+						variant="tertiary"
+						style={{bottom: '0.3rem'}}>
 					</Button>
 				</Flex>
 			</Flex>
