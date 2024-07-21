@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LinkGrid from '../../components/LinkGrid';
 import Logo from '../../components/Logo';
+import TypewriterEffect from '@/components/TypewriterText';
 
 export default function Home() {
     return (
@@ -21,42 +22,19 @@ export default function Home() {
             as="section"
             maxWidth={64}>
             <Flex
-                position='relative'
-                paddingX="2"
-                paddingY="16"
+                style={{ zIndex: '1', width: '95%' }}
+                position="relative"
+                paddingX="24"
+                paddingY="8"
                 marginBottom="xs"
-                justifyContent='space-evenly'
-                alignItems='center'
-                border="neutral-medium"
-                borderStyle="solid-1"
-                fillWidth
-                >
-                <Flex
-                paddingX="8"
-                paddingY="2"
                 alignItems='center'
                 justifyContent='center'
-                background="brand-strong"
-                border="neutral-medium"
-                borderStyle="solid-1"
-                radius="xs-8">
-                <Logo></Logo>
-                </Flex>
-                <Flex
-                    // style={{ zIndex: '1', width: '95%' }}
-                    // position="relative"
-                    // paddingX="24"
-                    // paddingY="8"
-                    // marginBottom="xs"
-                    // alignItems='center'
-                    // justifyContent='center'
-                    >
-                    <Heading
-                        variant="display-strong-s"
-                        onBackground="neutral-strong">
-                        Free Gazans
-                    </Heading>
-                </Flex>
+                >
+                <Heading
+                    variant="display-strong-s"
+                    onBackground="neutral-strong">
+                    Free Gazans
+                </Heading>
             </Flex>
             <Flex
                 fillWidth
@@ -71,10 +49,10 @@ export default function Home() {
                 <Text
                     variant='body-default-m'
                     onBackground='accent-medium'>
-                    As the bombs rain down, Gazans are desperately trying to evacuate through the only escape route i.e. the Rafah border crossing. Although
-                    it is now closed, once open again, the Egyptians are charging our brothers and sisters $5000 per person just to cross through. FreeGazans was created
-                    to have a centralised place to find the gofundme or other donation links of vetted individuals and families in Gaza. Links have been sourced directly
-                    from the individuals.
+                        <TypewriterEffect text='As conflict intensifies, the people of Gaza urgently seek to evacuate through the Rafah border crossing, 
+                    their sole escape route. Although currently closed, the Rafah crossing is expected to reopen with a steep fee of $5000 per person imposed by Egyptian authorities. 
+                    FreeGazans is dedicated to providing a centralized platform where you can find verified GoFundMe and other donation links for individuals and families in Gaza. 
+                    Each link has been directly sourced from those in need, ensuring your support reaches them promptly.' speed={25}></TypewriterEffect>
                 </Text>
             </Flex>
             <Flex
