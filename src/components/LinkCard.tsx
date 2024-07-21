@@ -12,7 +12,7 @@ interface LinkCardProps {
 
 const LinkCard: React.FC<LinkCardProps> = ({ name, description, link }) => (
   <Link
-    style={{ border: '1px solid var(--neutral-border-medium)', borderRadius: 'var(--radius-xl-nest-8)', padding: 'var(--responsive-space-l)', marginBottom: 10 }}
+    style={{ border: '2px solid var(--neutral-border-strong)', borderRadius: 'var(--radius-xl-nest-8)', padding: 'var(--responsive-space-l)', marginBottom: 10 }}
     href={link}>
     <Flex
       fillWidth
