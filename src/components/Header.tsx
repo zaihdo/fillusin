@@ -3,8 +3,9 @@
 "use client";
 
 import React from 'react';
-import { Flex, Button } from '@/once-ui/components';
+import { Flex, Button, Heading } from '@/once-ui/components';
 import { useTheme } from '../app/ThemeContext';
+import Logo from '../components/Logo';
 
 export default function Header() {
     const { theme, toggleTheme } = useTheme();
@@ -12,24 +13,26 @@ export default function Header() {
     return (
         <Flex
             fillWidth
+            position='relative'
             justifyContent="space-between"
-            style={{ position: 'relative', width: '100%' }}
             as="header"
-            paddingX="l"
-            paddingY="2">
-            <Flex gap="12">
-                <Button
-                    onClick={toggleTheme}
-                    prefixIcon={theme === 'dark' ? 'moon' : 'sun'}
-                    variant='tertiary'
-                    style={{
-                        position: 'absolute',
-                        top: '0rem',
-                        right: '16px',
-                        zIndex: 1000,
-                    }}>
-                </Button>
-            </Flex>
+            paddingX='l'
+            paddingY="2"
+            margin='m'
+            borderStyle='solid-2'
+            radius='xl-8'
+            alignItems='center'
+            >
+            <Logo></Logo>
+            <Heading variant='heading-strong-xl'>Campaign to Free Gazans</Heading>
+            <Button
+                onClick={toggleTheme}
+                prefixIcon={theme === 'dark' ? 'moon' : 'sun'}
+                variant='tertiary'
+                style={{
+                    zIndex: 1000,
+                }}>
+            </Button>
         </Flex>
     );
 }

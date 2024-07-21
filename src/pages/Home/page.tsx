@@ -21,7 +21,7 @@ export default function Home() {
             flex={1}
             as="section"
             maxWidth={64}>
-            <Flex
+            {/* <Flex
                 style={{ zIndex: '1', width: '95%' }}
                 position="relative"
                 paddingX="24"
@@ -35,7 +35,7 @@ export default function Home() {
                     onBackground="neutral-strong">
                     Free Gazans
                 </Heading>
-            </Flex>
+            </Flex> */}
             <Flex
                 fillWidth
                 position="relative"
