@@ -16,7 +16,7 @@ export default function Footer() {
             paddingX="l"
             paddingY="m">
             <Text onBackground="neutral-weak">
-                Built with love for the people of Gaza with <Link href="https://www.once-ui.com/">OnceUI</Link>
+                Crafted with ❤️ for the people of Gaza using <Link href="https://www.once-ui.com/">OnceUI</Link>
             </Text>
             <Flex gap="12">
                 <Button
