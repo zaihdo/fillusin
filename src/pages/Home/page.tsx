@@ -40,8 +40,8 @@ export default function Home() {
                 fillWidth
                 position="relative"
                 background="surface"
-                border="neutral-medium"
-                borderStyle="solid-1"
+                border="neutral-strong"
+                borderStyle="solid-2"
                 radius="xl-8"
                 paddingX="24"
                 paddingY="16"
@@ -49,9 +49,9 @@ export default function Home() {
                 <Text
                     variant='body-default-m'
                     onBackground='accent-medium'>
-                        <TypewriterEffect text='As conflict intensifies, the people of Gaza urgently seek to evacuate through the Rafah border crossing, 
+                    <TypewriterEffect text='As conflict intensifies, the people of Gaza urgently seek to evacuate through the Rafah border crossing, 
                     their sole escape route. Although currently closed, the Rafah crossing is expected to reopen with a steep fee of $5000 per person imposed by Egyptian authorities. 
-                    FreeGazans is dedicated to providing a centralized platform where you can find verified GoFundMe and other donation links for individuals and families in Gaza. 
+                    FillUsIn is dedicated to providing a centralized platform where you can find verified GoFundMe and other donation links for individuals and families in Gaza. 
                     Each link has been directly sourced from those in need, ensuring your support reaches them promptly.' speed={25}></TypewriterEffect>
                 </Text>
             </Flex>

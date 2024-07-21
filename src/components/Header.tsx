@@ -24,7 +24,7 @@ export default function Header() {
             alignItems='center'
             >
             <Logo></Logo>
-            <Heading variant='heading-strong-xl'>Campaign to Free Gazans</Heading>
+            <Heading variant='display-strong-xs' onBackground='neutral-strong'>Campaign to Free Gazans</Heading>
             <Button
                 onClick={toggleTheme}
                 prefixIcon={theme === 'dark' ? 'moon' : 'sun'}
