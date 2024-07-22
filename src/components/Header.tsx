@@ -12,18 +12,26 @@ export default function Header() {
 
     return (
         <Flex
+            // fillWidth
+            // position='relative'
+            // as="header"
+            // paddingX='m'
+            // paddingY="2"
+            // marginBottom='m'
+            // borderStyle='solid-2'
+            // radius='xl-8'
+            // justifyContent="space-between"
+            // alignItems='center'
+            // >
             fillWidth
-            position='relative'
-            as="header"
-            paddingX='l'
-            paddingY="2"
-            margin='m'
-            borderStyle='solid-2'
-            radius='xl-8'
             justifyContent="space-between"
             alignItems='center'
-            >
-            <Logo></Logo>
+            style={{ borderBottom: '1px solid var(--neutral-border-medium)' }}
+            as="footer"
+            paddingX="l"
+            paddingY="xs"
+            marginBottom='m'>
+            <Logo size="s"></Logo>
             <Heading variant='body-strong-xl' onBackground='neutral-strong'>Campaign to Free Gazans</Heading>
             <Button
                 onClick={toggleTheme}
