@@ -15,7 +15,7 @@ export default function Footer() {
             as="footer"
             paddingX="l"
             paddingY="m">
-            <Text onBackground="neutral-weak">
+            <Text onBackground="neutral-weak" variant='body-default-s'>
                 Crafted with ❤️ for the people of Gaza using <Link href="https://www.once-ui.com/">OnceUI</Link>
             </Text>
             <Flex gap="12">
