@@ -14,17 +14,17 @@ export default function Header() {
         <Flex
             fillWidth
             position='relative'
-            justifyContent="space-between"
             as="header"
             paddingX='l'
             paddingY="2"
             margin='m'
             borderStyle='solid-2'
             radius='xl-8'
+            justifyContent="space-between"
             alignItems='center'
             >
             <Logo></Logo>
-            <Heading variant='display-strong-xs' onBackground='neutral-strong'>Campaign to Free Gazans</Heading>
+            <Heading variant='body-strong-xl' onBackground='neutral-strong'>Campaign to Free Gazans</Heading>
             <Button
                 onClick={toggleTheme}
                 prefixIcon={theme === 'dark' ? 'moon' : 'sun'}
