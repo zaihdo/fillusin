@@ -12,17 +12,6 @@ export default function Header() {
 
     return (
         <Flex
-            // fillWidth
-            // position='relative'
-            // as="header"
-            // paddingX='m'
-            // paddingY="2"
-            // marginBottom='m'
-            // borderStyle='solid-2'
-            // radius='xl-8'
-            // justifyContent="space-between"
-            // alignItems='center'
-            // >
             fillWidth
             justifyContent="space-between"
             alignItems='center'

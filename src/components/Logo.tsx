@@ -16,48 +16,48 @@ const Logo: React.FC<LogoProps> = ({ size }) => {
   let width = 75;
   let height = 75;
 
-  if (size) {
-    switch (size) {
-      case 'm':
-        selectedLogo = logo100;
-        width = 100;
-        height = 100;
-        break;
-      case 'l':
-        selectedLogo = logo150;
-        width = 150;
-        height = 150;
-        break;
-      case 's':
-      default:
-        selectedLogo = logo75;
-        width = 75;
-        height = 75;
-        break;
-    }
-  } else {
-    if (isMobile) {
-        selectedLogo = logo75;
-        width = 75;
-        height = 75;
-    }
-    else if (isTablet) {
-      selectedLogo = logo100;
-      width = 100;
-      height = 100;
-    } else if (isDesktop) {
-      selectedLogo = logo150;
-      width = 150;
-      height = 150;
-    }
-  }
+//   if (size) {
+//     switch (size) {
+//       case 'm':
+//         selectedLogo = logo100;
+//         width = 100;
+//         height = 100;
+//         break;
+//       case 'l':
+//         selectedLogo = logo150;
+//         width = 150;
+//         height = 150;
+//         break;
+//       case 's':
+//       default:
+//         selectedLogo = logo75;
+//         width = 75;
+//         height = 75;
+//         break;
+//     }
+//   } else {
+//     if (isMobile) {
+//         selectedLogo = logo75;
+//         width = 75;
+//         height = 75;
+//     }
+//     else if (isTablet) {
+//       selectedLogo = logo100;
+//       width = 100;
+//       height = 100;
+//     } else if (isDesktop) {
+//       selectedLogo = logo150;
+//       width = 150;
+//       height = 150;
+//     }
+//   }
 
   return (
     <Image
-      src={selectedLogo}
+      src={logo75}
       alt="Logo"
-      width={width}
-      height={height}
+      width={75}
+      height={75}
     />
   );
 };
