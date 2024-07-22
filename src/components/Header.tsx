@@ -12,6 +12,17 @@ export default function Header() {
 
     return (
         <Flex
+            // fillWidth
+            // position='relative'
+            // as="header"
+            // paddingX='m'
+            // paddingY="2"
+            // marginBottom='m'
+            // borderStyle='solid-2'
+            // radius='xl-8'
+            // justifyContent="space-between"
+            // alignItems='center'
+            // >
             fillWidth
             justifyContent="space-between"
             alignItems='center'
@@ -21,10 +32,7 @@ export default function Header() {
             paddingY="xs"
             marginBottom='m'>
             <Logo size="s"></Logo>
-            <Heading 
-            style={{ marginLeft: 'var(--responsive-space-m)', textAlign: 'left' }} 
-            variant='body-strong-xl' 
-            onBackground='neutral-strong'>Campaign: Free Gazans</Heading>
+            <Heading variant='body-strong-xl' onBackground='neutral-strong'>Campaign to Free Gazans</Heading>
             <Button
                 onClick={toggleTheme}
                 prefixIcon={theme === 'dark' ? 'moon' : 'sun'}
