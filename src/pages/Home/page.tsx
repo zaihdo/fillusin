@@ -3,11 +3,9 @@
 "use client";
 
 import React from 'react';
-import { Heading, Text, Flex, Button } from '@/once-ui/components';
-import Image from 'next/image';
+import { Text, Flex, Button } from '@/once-ui/components';
 import Link from 'next/link';
 import LinkGrid from '../../components/LinkGrid';
-import Logo from '../../components/Logo';
 import TypewriterEffect from '@/components/TypewriterText';
 
 export default function Home() {
