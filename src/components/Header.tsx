@@ -32,7 +32,10 @@ export default function Header() {
             paddingY="xs"
             marginBottom='m'>
             <Logo size="s"></Logo>
-            <Heading variant='body-strong-xl' onBackground='neutral-strong'>Campaign to Free Gazans</Heading>
+            <Heading 
+            style={{ marginLeft: 'var(--responsive-space-m)', textAlign: 'left' }} 
+            variant='body-strong-xl' 
+            onBackground='neutral-strong'>Campaign: Free Gazans</Heading>
             <Button
                 onClick={toggleTheme}
                 prefixIcon={theme === 'dark' ? 'moon' : 'sun'}
