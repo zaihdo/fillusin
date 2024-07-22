@@ -21,25 +21,10 @@ export default function Home() {
             flex={1}
             as="section"
             maxWidth={64}>
-            {/* <Flex
-                style={{ zIndex: '1', width: '95%' }}
-                position="relative"
-                paddingX="24"
-                paddingY="8"
-                marginBottom="xs"
-                alignItems='center'
-                justifyContent='center'
-                >
-                <Heading
-                    variant="display-strong-s"
-                    onBackground="neutral-strong">
-                    Free Gazans
-                </Heading>
-            </Flex> */}
             <Flex
                 fillWidth
                 position="relative"
-                background="surface"
+                background="danger-medium"
                 border="neutral-strong"
                 borderStyle="solid-2"
                 radius="xl-8"

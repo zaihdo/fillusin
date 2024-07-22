@@ -12,13 +12,15 @@ interface LinkCardProps {
 
 const LinkCard: React.FC<LinkCardProps> = ({ name, description, link }) => (
   <Link
-    style={{ border: '2px solid var(--neutral-border-strong)', borderRadius: 'var(--radius-xl-nest-8)', padding: 'var(--responsive-space-l)', marginBottom: 10 }}
-    href={link}>
+    style={{ background: 'var(--accent-background-medium)', border: '2px solid var(--neutral-border-strong)', borderRadius: 'var(--radius-xl-nest-8)', padding: 'var(--responsive-space-l)', marginBottom: 10 }}
+    href={link}
+    >
     <Flex
       fillWidth
       direction="column"
       paddingY="8"
-      gap="8">
+      gap="8"
+      >
       <Flex
         fillWidth
         alignItems="center"
