@@ -34,12 +34,12 @@ img {
 a {
     color: var(--brand-on-background-medium);
     text-decoration: none;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.25em;
-    text-decoration-color: var(--neutral-border-strong) !important;
 
     &:hover {
         text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.25em;
+        text-decoration-color: var(--neutral-border-strong);
     }
 }
 
@@ -56,14 +56,10 @@ a {
 
 ::-webkit-scrollbar-thumb {
     background: var(--neutral-alpha-medium);
-    border-radius: var(--radius-full);
-    transition: var(--transition-micro-medium);
+    border-radius: var(--radius-999);
+    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
 
     &:hover {
         background: var(--neutral-alpha-strong);
     }
-}
-
-::-webkit-scrollbar-corner {
-    background-color: var(--static-transparent);
 }
