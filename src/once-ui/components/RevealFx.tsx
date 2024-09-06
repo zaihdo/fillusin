@@ -1,33 +1,30 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect, forwardRef } from 'react';
 import { SpacingToken } from '../types';
 import styles from './RevealFx.module.scss';
-import { Flex } from '.';
 
-interface RevealFxProps extends React.HTMLAttributes<HTMLDivElement> {
+interface RevealFxProps extends React.HTMLAttributes<HTMLSpanElement> {
 	children: React.ReactNode;
 	speed?: 'slow' | 'medium' | 'fast';
 	delay?: number;
-	revealedByDefault?: boolean;
 	translateY?: number | SpacingToken;
 	trigger?: boolean;
 	style?: React.CSSProperties;
 	className?: string;
 }
 
-const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(({
+const RevealFx = forwardRef<HTMLSpanElement, RevealFxProps>(({
 	children,
 	speed = 'medium',
 	delay = 0,
-	revealedByDefault = false,
 	translateY,
 	trigger,
 	style,
 	className,
 	...rest
 }, ref) => {
-	const [isRevealed, setIsRevealed] = useState(revealedByDefault);
+	const [isRevealed, setIsRevealed] = useState(false);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -46,7 +43,7 @@ const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(({
 	const getSpeedDuration = () => {
 		switch (speed) {
 			case 'fast':
-				return '1s';
+				return '1.5s';
 			case 'medium':
 				return '2s';
 			case 'slow':
@@ -76,18 +73,16 @@ const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(({
 	};
 
 	return (
-		<Flex
-			fillWidth
-			justifyContent="center"
+		<span
 			ref={ref}
 			aria-hidden="true"
 			style={revealStyle}
 			className={combinedClassName}
 			{...rest}>
 			{children}
-		</Flex>
+		</span>
 	);
 });
 
-RevealFx.displayName = 'RevealFx';
+RevealFx.displayName = "RevealFx";
 export { RevealFx };

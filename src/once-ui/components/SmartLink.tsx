@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { forwardRef, ReactNode } from 'react';
 import classNames from 'classnames';
@@ -12,8 +12,7 @@ interface SmartLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     iconSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
     style?: React.CSSProperties;
     className?: string;
-    selected?: boolean;
-    unstyled?: boolean;
+    selected? : boolean;
     children: ReactNode;
 }
 
@@ -25,7 +24,6 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(({
         style,
         className,
         selected,
-        unstyled = false,
         children,
         ...props
     }, ref) => {
@@ -33,27 +31,21 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(({
 
         const content = (
             <>
-                {prefixIcon && <Icon name={prefixIcon} size={iconSize} />}
+                {prefixIcon && <Icon name={prefixIcon} size={iconSize}/>}
                 {children}
-                {suffixIcon && <Icon name={suffixIcon} size={iconSize} />}
+                {suffixIcon && <Icon name={suffixIcon} size={iconSize}/>}
             </>
         );
 
         const commonProps = {
             ref,
-            className: classNames(className || '', {
-                'px-4 mx-4': !unstyled,
-            }),
-            style: !unstyled ? {
+            className: classNames(className || '', 'px-4', 'mx-4'),
+            style: {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 'var(--static-space-8)',
                 borderRadius: 'var(--radius-s)',
-                ...(selected && { textDecoration: 'underline' }),
-                ...style
-            } : { 
-                textDecoration: 'none',
-                color: 'inherit',
+                ...(selected && {textDecoration: 'underline'}),
                 ...style
             },
             ...props
@@ -82,6 +74,6 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(({
     }
 );
 
-SmartLink.displayName = 'SmartLink';
+SmartLink.displayName = "SmartLink";
 
 export { SmartLink };
