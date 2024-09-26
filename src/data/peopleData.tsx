@@ -5,6 +5,11 @@ const peopleData = [
     link: "https://www.gofundme.com/f/help-the-ahmed-family-to-leave-gaza-for-egypt"
   },
   {
+    name: "Noura Aklouk",
+    description: "👉 The Aklouks, half of whom are engineers, not only lost their home which their father built from the ground up, but their sense of stability too. Read more about their story and see how you can support them.",
+    link: "https://www.gofundme.com/f/help-the-ahmed-family-to-leave-gaza-for-egypt"
+  },
+  {
     name: "Suhaib Abid",
     description: "👉 Suhaib and his family, including his elderly parents, have been seeking help after 171 days of chaos and despair under the rain of missiles. Please read their story and help them find an escape.",
     link: "https://gofund.me/ea678d4c"
