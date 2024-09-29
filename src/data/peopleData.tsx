@@ -7,7 +7,7 @@ const peopleData = [
   {
     name: "Noura Aklouk",
     description: "👉 The Aklouks, half of whom are engineers, not only lost their home which their father built from the ground up, but their sense of stability too. Read more about their story and see how you can support them.",
-    link: "https://www.gofundme.com/f/help-the-ahmed-family-to-leave-gaza-for-egypt"
+    link: "https://www.gofundme.com/f/help-rebuild-a-familys-home-in-palestine?utm_campaign=p_nacp+share-sheet&utm_medium=copy_link&utm_source=customer"
   },
   {
     name: "Suhaib Abid",
