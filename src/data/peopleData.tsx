@@ -15,14 +15,14 @@ const peopleData = [
     link: "https://gofund.me/ea678d4c"
   },
   {
-    name: "Sabrin Alkabariti",
-    description: "👉 Sabrin lives in Gaza with her parents and four siblings - Ahmed, Mahmoud, Mohamed, and Hanin. Since the start of the genocide and the destruction of their home, they have had to move seven times. After seeking refuge in Rafah, they had to flee the Israeli assault and are now living in a single tent in Khan Younis. Support their cause here.",
-    link: "https://www.gofundme.com/f/eid-aladha-donations-for-the-alkabariti-family-of-gaza"
-  },
-  {
     name: "Iyad R. Manaa",
     description: "👉 Iyad and his family lost their apartment and all their personal belongings when the building where they lived for 10 years was destroyed by the IOF. They moved first to Rafah and then to Deir Al-Balah, still displaced and homeless without access to water and food. Read their story and support them.",
     link: "https://gofund.me/e1e1b340"
+  },
+  {
+    name: "Sabrin Alkabariti",
+    description: "👉 Sabrin lives in Gaza with her parents and four siblings - Ahmed, Mahmoud, Mohamed, and Hanin. Since the start of the genocide and the destruction of their home, they have had to move seven times. After seeking refuge in Rafah, they had to flee the Israeli assault and are now living in a single tent in Khan Younis. Support their cause here.",
+    link: "https://www.gofundme.com/f/eid-aladha-donations-for-the-alkabariti-family-of-gaza"
   },
   {
     name: "Ibrahim Ahmad",
