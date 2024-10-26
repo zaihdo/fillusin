@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef } from 'react';
 
@@ -39,7 +39,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(({
     );
 });
 
-AvatarGroup.displayName = "AvatarGroup";
+AvatarGroup.displayName = 'AvatarGroup';
 
 export { AvatarGroup };
 export type { AvatarGroupProps };

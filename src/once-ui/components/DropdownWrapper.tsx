@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useRef, useEffect, ReactNode, forwardRef, useImperativeHandle } from 'react';
 import { Flex, Dropdown, DropdownProps } from '.';
@@ -82,6 +82,6 @@ const DropdownWrapper: React.FC<DropdownWrapperProps> = forwardRef<HTMLDivElemen
     );
 });
 
-DropdownWrapper.displayName = "DropdownWrapper";
+DropdownWrapper.displayName = 'DropdownWrapper';
 
 export { DropdownWrapper };
