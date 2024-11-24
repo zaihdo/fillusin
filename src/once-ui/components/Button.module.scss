@@ -82,6 +82,20 @@
     }
 }
 
+.custom-primary {
+    box-shadow: inset 0 var(--solid-inset-distance) var(--solid-inset-size) var(--solid-inset-color-brand);
+    background: var(--scheme-brand-400);
+    border-style: solid;
+    border-width: var(--solid-border-width);
+    border-color: var(--solid-border-color-brand);
+    color: var(--brand-on-solid-strong);
+
+    &:hover, &:focus {
+        background: var(--scheme-accent-800);
+        scale: (1.2)
+    }
+}
+
 .s {
     padding: var(--static-space-4) var(--static-space-8);
     border-radius: var(--radius-m);
