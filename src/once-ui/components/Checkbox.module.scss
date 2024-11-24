@@ -7,8 +7,8 @@
         }
     }
 }
-  
-.radioButton {
+
+.checkbox {
     box-shadow: inset 0 0 0 var(--solid-inset-color-brand);
     border-color: var(--solid-border-color-neutral);
     border-style: solid;
@@ -41,7 +41,7 @@
     z-index: -1;
     animation: scaleInCenter 0.2s forwards;
 }
-  
+
 @keyframes scaleInCenter {
     from {
       transform: translate(-50%, -50%) scale(0);
@@ -52,10 +52,13 @@
 }
 
 .icon {
-    background: var(--brand-on-solid-strong);
     animation: scaleIn 0.2s forwards;
+}
+
+.indeterminate {
+    background: var(--brand-on-solid-strong);
     width: var(--static-space-12);
-    height: var(--static-space-12);
+    height: var(--static-space-2);
 }
 
 @keyframes scaleIn {
@@ -65,4 +68,4 @@
     to {
       transform: scale(1);
     }
-} 
+}
