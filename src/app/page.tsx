@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Heading, Text, Flex, Button, Grid, Icon, LetterFx, Arrow, IconButton} from '@/once-ui/components';
+import { Heading, Text, Flex, Button, Grid, Icon, LetterFx, Arrow, IconButton, Accordion} from '@/once-ui/components';
 import Link from 'next/link';
 import { Header } from '@/once-ui/components/Header';
 
@@ -107,6 +107,169 @@ export default function Home() {
 							</Button>
 						</Flex>
 					</Flex>
+
+					<Grid
+						border="accent-strong"
+						borderStyle="solid-1"
+						columns="repeat(3, 1fr)"
+						gap="24"
+						padding="24"
+						fillWidth
+						radius="xl"
+						background="accent-strong"
+						>
+							<Flex 
+								alignItems='center'
+								justifyContent='center'
+								padding='20'
+								style={{flexDirection: 'column'}}
+								>
+								<img src="/images/final.svg" width={'200'} height={'100'}/>
+								<Heading
+									align='center'
+									wrap="balance"
+									variant="body-default-l"
+									padding='20'
+									>
+									<span className="font-code">
+									Join us on a mission to bring back the Ansar project
+									</span>
+								</Heading>
+							
+							</Flex>
+							<Flex 
+								alignItems='center'
+								justifyContent='center'
+								padding='20'
+								style={{flexDirection: 'column'}}
+								>
+								<img src="/images/final.svg" width={'200'} height={'100'}/>
+								<Heading
+									align='center'
+									wrap="balance"
+									variant="body-default-l"
+									padding='20'
+									>
+									<span className="font-code">
+									Join us on a mission to bring back the Ansar project
+									</span>
+								</Heading>
+							
+							</Flex>
+							<Flex 
+								alignItems='center'
+								justifyContent='center'
+								padding='20'
+								style={{flexDirection: 'column'}}
+								>
+								<img src="/images/final.svg" width={'200'} height={'100'}/>
+								<Heading
+									align='center'
+									wrap="balance"
+									variant="body-default-l"
+									padding='20'
+									>
+									<span className="font-code">
+									Join us on a mission to bring back the Ansar project
+									</span>
+								</Heading>
+							
+							</Flex>
+					</Grid>
+
+
+					<Flex
+						flex={1}
+						fillWidth
+						padding="s"
+						gap="32"
+						// justifyContent="space-between"
+						mobileDirection='column'
+						alignItems="flex-start"
+					>
+						<Flex 
+							flex={1}
+							direction="column"
+							justifyContent="center"
+						>
+							<Heading
+								align="left"
+								wrap="balance"
+								variant="display-strong-l"
+							>
+								<span className="font-code">
+									<LetterFx trigger="instant">
+										Frequently asked
+									</LetterFx>
+								</span>
+								<br />
+								<span>
+									<LetterFx trigger="instant">
+										questions
+									</LetterFx>
+								</span>
+							</Heading>
+						</Flex>
+
+						<Flex 
+							flex={1} 
+							direction="column" 
+							gap="12"
+						>
+							<Accordion
+								title="What's happening in Gaza now?"
+								style={{ borderRadius: 25 }}
+							>
+								<Text
+									variant="body-default-s"
+									onBackground="neutral-weak"
+								>
+									In addition to the bombs raining down, the blockade and weather are resulting in starvation and inhumane living conditions.
+								</Text>
+							</Accordion>
+							<Accordion
+								title="Why do people of Gaza need donations?"
+							>
+								<Text
+									variant="body-default-s"
+									onBackground="neutral-weak"
+								>
+									To maintain a standard of living and purchase groceries as well as tent equipment at inflated prices. Some Gazans are also raising funds to escape into Egypt.
+								</Text>
+							</Accordion>
+							<Accordion
+								title="Do you take an admin fee from any donation?"
+							>
+								<Text
+									variant="body-default-s"
+									onBackground="neutral-weak"
+								>
+									Not at all. You donate directly to the beneficiary link and we just help you get there.
+								</Text>
+							</Accordion>
+							<Accordion
+								title="How do you choose the cases?"
+							>
+								<Text
+									variant="body-default-s"
+									onBackground="neutral-weak"
+								>
+									All recipients of the campaigns are verified and vetted for by our moderators who engage in regular conversation and maintain relationships with them directly.
+								</Text>
+							</Accordion>
+							<Accordion
+								title="Do you change the cases from time to time?"
+							>
+								<Text
+									variant="body-default-s"
+									onBackground="neutral-weak"
+								>
+									Yes, we do. If a campaign reaches its goal, it gets replaced. Additionally, if we lose contact with the campaign manager, the case will be discontinued.
+								</Text>
+							</Accordion>
+						</Flex>
+					</Flex>
+
 					<Grid
 						border="accent-strong"
 						borderStyle="solid-1"
@@ -161,7 +324,7 @@ export default function Home() {
 							/>
 							</Flex>
 							</Flex>
-						</Grid>
+					</Grid>
 				</Flex>
 			</Flex>
 			<Flex

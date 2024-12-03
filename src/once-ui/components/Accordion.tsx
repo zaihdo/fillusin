@@ -116,7 +116,7 @@ const Accordion: React.FC<AccordionProps> = forwardRef(({
                 <Icon
                     name="chevronDown"
                     size="m"
-                    style={{ display: 'flex', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'var(--transition-micro-medium)' }} />
+                    style={{ display: 'flex', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'var(--transition-micro-medium)', background: 'transparent' }} />
             </Flex>
             <Flex
                 id="accordion-content"
