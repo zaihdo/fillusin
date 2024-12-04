@@ -108,76 +108,103 @@ export default function Home() {
 						</Flex>
 					</Flex>
 
-					<Grid
-						border="accent-strong"
-						borderStyle="solid-1"
-						columns="repeat(3, 1fr)"
-						gap="24"
-						padding="24"
-						fillWidth
-						radius="xl"
-						background="accent-strong"
-						>
-							<Flex 
-								alignItems='center'
-								justifyContent='center'
-								padding='20'
-								style={{flexDirection: 'column'}}
-								>
-								<img src="/images/final.svg" width={'200'} height={'100'}/>
-								<Heading
-									align='center'
-									wrap="balance"
-									variant="body-default-l"
-									padding='20'
-									>
-									<span className="font-code">
-									Join us on a mission to bring back the Ansar project
-									</span>
-								</Heading>
-							
-							</Flex>
-							<Flex 
-								alignItems='center'
-								justifyContent='center'
-								padding='20'
-								style={{flexDirection: 'column'}}
-								>
-								<img src="/images/final.svg" width={'200'} height={'100'}/>
-								<Heading
-									align='center'
-									wrap="balance"
-									variant="body-default-l"
-									padding='20'
-									>
-									<span className="font-code">
-									Join us on a mission to bring back the Ansar project
-									</span>
-								</Heading>
-							
-							</Flex>
-							<Flex 
-								alignItems='center'
-								justifyContent='center'
-								padding='20'
-								style={{flexDirection: 'column'}}
-								>
-								<img src="/images/final.svg" width={'200'} height={'100'}/>
-								<Heading
-									align='center'
-									wrap="balance"
-									variant="body-default-l"
-									padding='20'
-									>
-									<span className="font-code">
-									Join us on a mission to bring back the Ansar project
-									</span>
-								</Heading>
-							
-							</Flex>
-					</Grid>
+					<Flex radius="xl"
+							background="accent-strong"
+							direction='column'
+							gap="24"
+							padding="24"
+							>
+					<Heading
+								align="center"
+								wrap="balance"
+								variant="display-default-s"
 
-
+							>
+								<span className="font-code">
+									<LetterFx trigger="instant">
+									Donating to the beneficiaries directly
+									</LetterFx>
+								</span>
+								
+							</Heading>
+						<Grid
+							border="accent-strong"
+							borderStyle="solid-1"
+							columns="repeat(3, 1fr)"
+							gap="24"
+							padding="24"
+							fillWidth
+							radius="xl"
+							background="accent-strong"
+							>
+								
+								<Flex 
+									alignItems='center'
+									justifyContent='center'
+									padding='20'
+									style={{flexDirection: 'column'}}
+									>
+									<Heading
+										align='center'
+										wrap="balance"
+										variant="heading-default-xl"
+										padding='20'
+										>
+										<span className="font-code">
+										Read Stories
+										</span>
+									</Heading>
+									<Text align='center'>
+									We provide the links of the beneficiaries, and you can directly help them.
+									</Text>
+								
+								</Flex>
+								<Flex 
+									alignItems='center'
+									justifyContent='center'
+									padding='20'
+									style={{flexDirection: 'column'}}
+									>
+									<Heading
+										align='center'
+										wrap="balance"
+										variant="heading-default-xl"
+										padding='20'
+										>
+										<span className="font-code">
+										Give Happiness
+										</span>
+									</Heading>
+									<Text align='center'>
+									Giving happiness to others is one of the most fulfilling things you dcan do
+									</Text>
+								
+								</Flex>
+								<Flex 
+									alignItems='center'
+									justifyContent='center'
+									padding='20'
+									style={{flexDirection: 'column'}}
+									>
+									<img src="/images/final.svg" width={'200'} height={'100'}/>
+									<Heading
+										align='center'
+										wrap="balance"
+										variant="heading-default-xl"
+										padding='20'
+										>
+										<span className="font-code">
+										Share, Share, Share
+										</span>
+									</Heading>
+									<Text align='center'>
+									Maybe  you are not able to help directly, but maybe someone else can help!
+									</Text>
+								
+								</Flex>
+						</Grid>
+					</Flex>
+					
 					<Flex
 						flex={1}
 						fillWidth
