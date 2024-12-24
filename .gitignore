@@ -2,3 +2,4 @@
 .netlify
 .next
 node_modules
+.env*
