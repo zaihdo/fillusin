@@ -1,21 +1,27 @@
-"use client";
+'use client';
 
-import React, { ReactNode, HTMLAttributes } from 'react';
-
+import React, { forwardRef, ReactNode, HTMLAttributes } from 'react';
+import classNames from 'classnames';
 import styles from './InlineCode.module.scss';
 
 interface InlineCodeProps extends HTMLAttributes<HTMLSpanElement> {
     children: ReactNode;
+    className?: string;
+    style?: React.CSSProperties;
 }
 
-const InlineCode: React.FC<InlineCodeProps> = ({ children, ...props }) => {
+const InlineCode = forwardRef<HTMLSpanElement, InlineCodeProps>(({ children, className, style, ...props }, ref) => {
     return (
-        <span className={styles.inlineCode} {...props}>
+        <span
+            ref={ref}
+            className={classNames(styles.inlineCode, className)}
+            style={style}
+            {...props}>
             {children}
         </span>
     );
-};
+});
 
-InlineCode.displayName = "InlineCode";
+InlineCode.displayName = 'InlineCode';
 
 export { InlineCode };

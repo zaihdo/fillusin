@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { forwardRef, HTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { Flex, Text, Icon } from '.';
@@ -15,7 +15,7 @@ interface TagProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode;
 }
 
-const Tag: React.FC<TagProps> = ({
+const Tag = forwardRef<HTMLDivElement, TagProps>(({
     variant = 'neutral',
     size = 'm',
     label = '',
@@ -24,30 +24,33 @@ const Tag: React.FC<TagProps> = ({
     className,
     children,
     ...props
-}) => {
-    const labelSize = size === 's' ? 'label-default-s' : 'label-default-s';
+}, ref) => {
     const paddingSize = size === 's' ? '2' : '4';
 
     return (
-        <div
+        <Flex
+            alignItems="center"
+            radius="l"
+            gap="4"
+            ref={ref}
             className={classNames(styles.tag, styles[variant], styles[size], className)}
             {...props}>
             {prefixIcon && <Icon name={prefixIcon} size="xs" />}
-            <Flex
+            <Flex style={{userSelect: 'none'}}
                 paddingX={paddingSize}
                 alignItems="center">
                 <Text
                     as="span"
-                    variant={labelSize}>
+                    variant="label-default-s">
                     {label || children}
                 </Text>
             </Flex>
             {suffixIcon && <Icon name={suffixIcon} size="xs" />}
-        </div>
+        </Flex>
     );
-};
+});
 
-Tag.displayName = "Tag";
+Tag.displayName = 'Tag';
 
 export { Tag };
 export type { TagProps };

@@ -2,15 +2,16 @@ html {
     font-size:   var(--font-scaling-desktop);
     font-family: var(--font-family-body);
     font-weight: var(--font-weight-default);
+    color: var(--neutral-on-background-strong);
 }
 
-@media (max-width: 1280px) {
+@media (--m) {
     html {
         font-size: var(--font-scaling-tablet);
     }
 }
 
-@media (max-width: 560px) {
+@media (--s) {
     html {
         font-size: var(--font-scaling-mobile);
     }
@@ -18,6 +19,14 @@ html {
 
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
+}
+
+.font-size-inherit {
+    font-size: inherit;
+}
+
+.font-weight-inherit {
+    font-weight: inherit;
 }
 
 .font-display {
@@ -133,6 +142,33 @@ h1, h2, h3, h4, h5, h6, p {
 
 .font-label {
     font-family: var(--font-family-label);
+
+    &.font-strong, & > .font-strong {
+        font-weight: var(--font-weight-30);
+    }
+
+    &.font-default, & > .font-default {
+        font-weight: var(--font-weight-20);
+    }
+
+    &.font-l, & > .font-l {
+        font-size:   calc(var(--font-size-label-l) * var(--font-size-label-multiplier));
+        line-height: calc(var(--line-height-label-l) * var(--line-height-label-multiplier));
+    }
+    
+    &.font-m, & > .font-m {
+        font-size:   calc(var(--font-size-label-m) * var(--font-size-label-multiplier));
+        line-height: calc(var(--line-height-label-m) * var(--line-height-label-multiplier));
+    }
+    
+    &.font-s, & > .font-s {
+        font-size:   calc(var(--font-size-label-s) * var(--font-size-label-multiplier));
+        line-height: calc(var(--line-height-label-s) * var(--line-height-label-multiplier));
+    }
+}
+
+.font-code {
+    font-family: var(--font-family-code);
 
     &.font-strong, & > .font-strong {
         font-weight: var(--font-weight-30);

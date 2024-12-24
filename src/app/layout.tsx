@@ -1,66 +1,133 @@
-"use client";
-import { Flex } from '@/once-ui/components';
-import { Inter } from 'next/font/google';
-import { ThemeProvider, useTheme } from './ThemeContext';
+import "@/once-ui/styles/index.scss";
+import "@/once-ui/tokens/index.scss";
 
-const inter = Inter({
-    variable: '--font-inter',
-    subsets: ['latin'],
-    display: 'swap',
+import classNames from 'classnames';
+import { headers } from "next/headers";
+import { Metadata } from "next";
+
+import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config"
+
+import { Background, Flex } from '@/once-ui/components'
+
+import { Inter, Outfit } from 'next/font/google'
+import { Roboto_Mono } from 'next/font/google';
+
+const primary = Outfit({
+	variable: '--font-primary',
+	subsets: ['latin'],
+	display: 'swap',
+})
+
+const code = Outfit({
+	variable: '--font-code',
+	subsets: ['latin'],
+	display: 'swap',
 });
 
-import "@/once-ui/tokens/scheme.css";
-import "@/once-ui/tokens/theme.css";
-import "@/once-ui/tokens/layout.css";
-import "@/once-ui/tokens/border.css";
-import "@/once-ui/tokens/elevation.css";
-import "@/once-ui/tokens/typography.css";
+type FontConfig = {
+    variable: string;
+};
 
-import "@/once-ui/styles/spacing.css";
-import "@/once-ui/styles/border.css";
-import "@/once-ui/styles/color.css";
-import "@/once-ui/styles/background.css";
-import "@/once-ui/styles/typography.scss";
-import "@/once-ui/styles/global.scss";
-import "@/once-ui/styles/layout.css";
+/*
+	Replace with code for secondary and tertiary fonts
+	from https://once-ui.com/customize
+*/
+const secondary: FontConfig | undefined = undefined;
+const tertiary: FontConfig | undefined = undefined;
+/*
+*/
 
-function RootLayoutContent({ children }: Readonly<{ children: React.ReactNode }>) {
-    const { theme } = useTheme();
-    return (
-        <html
-            style={{ height: '100%', background: 'var(--page-background)' }}
-            data-theme={theme}
-            data-brand="moss"
-            data-accent="moss"
-            data-neutral="gray"
-            data-border="playful"
-            lang="en"
-            className={`${inter.variable}`}
-            suppressHydrationWarning={true}>
-            <head>
-                <title>FillUsIn | Free the Gazans</title>
-            </head>
-            <body
-                suppressHydrationWarning={true}
-                style={{ display: 'flex', height: '100%', width: '100%', margin: "0", padding: "0" }}>
-                <Flex
-                    flex={1}
-                    direction="column">
-                    {children}
-                </Flex>
-            </body>
-        </html>
-    );
+export async function generateMetadata(): Promise<Metadata> {
+	const host = (await headers()).get("host");
+	const metadataBase = host ? new URL(`https://${host}`) : undefined;
+
+	return {
+		title: meta.title,
+		description: meta.description,
+		openGraph: {
+			title: og.title,
+			description: og.description,
+			url: 'https://' + baseURL,
+			type: og.type as
+				| "website"
+				| "article"
+				| "book"
+				| "profile"
+				| "music.song"
+				| "music.album"
+				| "music.playlist"
+				| "music.radio_station"
+				| "video.movie"
+				| "video.episode"
+				| "video.tv_show"
+				| "video.other",
+		},
+		metadataBase,
+	};
 }
 
+const schemaData = {
+	"@context": "https://schema.org",
+	"@type": schema.type,
+	"url": "https://" + baseURL,
+	"logo": schema.logo,
+	"name": schema.name,
+	"description": schema.description,
+	"email": schema.email,
+	"sameAs": Object.values(social).filter(Boolean)
+};
+
 export default function RootLayout({
-    children,
+  	children,
 }: Readonly<{
-    children: React.ReactNode;
+  	children: React.ReactNode;
 }>) {
-    return (
-        <ThemeProvider>
-            <RootLayoutContent>{children}</RootLayoutContent>
-        </ThemeProvider>
-    );
+	return (
+		<Flex
+			as="html" lang="en"
+			fillHeight background="page"
+			data-theme="light"
+			data-brand="custom"
+			data-accent="custom"
+			data-neutral="custom"
+			data-border="playful"
+			data-solid="contrast"
+			data-solid-style="flat"
+			data-surface="filled"
+			data-transition="all"
+			data-scaling={style.scaling}
+			className={classNames(
+				primary.variable, code.variable,
+				secondary ? secondary.variable : '',
+				tertiary ? tertiary.variable : ''
+			)}>
+			<head>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+				/>
+			</head>
+			<Flex
+				as="body"
+				fillWidth fillHeight margin="0" padding="0">
+				<Background
+					style={{zIndex: '-1'}}
+					position="fixed"
+					mask="cursor"
+					dots={{
+						display: true,
+						opacity: 0.4,
+						size: '20'
+					}}
+					gradient={{
+						display: true,
+						opacity: 0.4,
+					}}/>
+				<Flex
+					flex={1} direction="column">
+					{children}
+				</Flex>
+			</Flex>
+		</Flex>
+	);
 }

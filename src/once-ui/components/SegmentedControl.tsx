@@ -1,12 +1,11 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { Flex, IconButton, ToggleButton } from '.';
-import styles from './SegmentedControl.module.scss';
+import { useState, useEffect } from 'react';
+import { Flex, ToggleButton, Scroller } from '.';
 
 interface ButtonOption {
-    label?: string;
-    value?: string;
+    label?: React.ReactNode;
+    value: string;
     prefixIcon?: string;
     suffixIcon?: string;
     className?: string;
@@ -15,7 +14,8 @@ interface ButtonOption {
 interface SegmentedControlProps {
     buttons: ButtonOption[];
     onToggle: (selected: string) => void;
-    defaultSelected: string;
+    defaultSelected?: string;
+    selected?: string;
     className?: string;
     style?: React.CSSProperties;
 }
@@ -24,109 +24,82 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
     buttons,
     onToggle,
     defaultSelected,
+    selected,
     className,
     style,
 }) => {
-    const defaultIndex = buttons.findIndex(button => (button.value || button.label) === defaultSelected);
-    const [selectedIndex, setSelectedIndex] = useState<number>(defaultIndex !== -1 ? defaultIndex : 0);
-    const [showLeftButton, setShowLeftButton] = useState<boolean>(false);
-    const [showRightButton, setShowRightButton] = useState<boolean>(false);
-    const controlRef = useRef<HTMLDivElement>(null);
+    const [internalSelected, setInternalSelected] = useState<string>(() => {
+        if (selected !== undefined) return selected;
+        if (defaultSelected !== undefined) return defaultSelected;
+        return buttons[0]?.value || '';
+    });
 
     useEffect(() => {
-        if (buttons[selectedIndex]) {
-            onToggle(buttons[selectedIndex].value || buttons[selectedIndex].label || '');
+        if (selected !== undefined) {
+            setInternalSelected(selected);
         }
-    }, [selectedIndex, buttons, onToggle]);
+    }, [selected]);
 
-    useEffect(() => {
-        const control = controlRef.current;
-        const handleScroll = () => {
-            if (control) {
-                const scrollLeft = control.scrollLeft;
-                const maxScrollLeft = control.scrollWidth - control.clientWidth;
-                setShowLeftButton(scrollLeft > 0);
-                setShowRightButton(scrollLeft < maxScrollLeft - 1);
-            }
-        };
-
-        if (control && control.scrollWidth > control.clientWidth) {
-            handleScroll();
-            control.addEventListener('scroll', handleScroll);
-            return () => control.removeEventListener('scroll', handleScroll);
-        }
-    }, [buttons]);
-
-    const handleScrollRight = () => {
-        const control = controlRef.current;
-        if (control) {
-            control.scrollBy({ left: control.clientWidth / 2, behavior: 'smooth' });
-        }
+    const handleButtonClick = (clickedButton: ButtonOption) => {
+        const newSelected = clickedButton.value;
+        setInternalSelected(newSelected);
+        onToggle(newSelected);
     };
 
-    const handleScrollLeft = () => {
-        const control = controlRef.current;
-        if (control) {
-            control.scrollBy({ left: -control.clientWidth / 2, behavior: 'smooth' });
-        }
-    };
-
-    const handleButtonClick = (index: number) => {
-        setSelectedIndex(index);
-        if (buttons[index]) {
-            onToggle(buttons[index].value || buttons[index].label || '');
-        }
-    };
+    const selectedIndex = buttons.findIndex(
+        button => button.value === internalSelected
+    );
 
     return (
         <Flex
-            position="relative"
             fillWidth
-            radius="m-4"
-            border="neutral-medium"
-            borderStyle="solid-1"
+            minWidth={0}
+            position="relative"
             className={className}
-            style={style}>
-            {showLeftButton && (
-                <div className={styles.scrollMaskContainer}>
-                    <div className={`${styles.scrollMaskLeft} ${styles.scrollMask}`}></div>
-                    <IconButton
-                        icon="chevronLeft"
-                        onClick={handleScrollLeft}
-                        size="s"
-                        variant="secondary"
-                        className={`${styles.scrollButton} ${styles.scrollButtonLeft}`}/>
-                </div>
-            )}
-            <div className={styles.control} ref={controlRef}>
-                {buttons.map((button, index) => (
-                    <ToggleButton
-                        key={button.value || button.label}
-                        label={button.label}
-                        value={button.value || button.label}
-                        width="fill"
-                        selected={selectedIndex === index}
-                        onClick={() => handleButtonClick(index)}
-                        prefixIcon={button.prefixIcon}
-                        suffixIcon={button.suffixIcon}/>
-                ))}
-            </div>
-            {showRightButton && (
-                <div className={`${styles.scrollMaskRight} ${styles.scrollMaskContainer}`}>
-                    <div className={styles.scrollMask}></div>
-                    <IconButton
-                        icon="chevronRight"
-                        onClick={handleScrollRight}
-                        size="s"
-                        variant="secondary"
-                        className={`${styles.scrollButton} ${styles.scrollButtonRight}`}/>
-                </div>
-            )}
+            style={style}
+        >
+            <Flex
+                fillWidth
+                position="relative"
+                overflowX="hidden"
+                overflowY="hidden"
+            >
+                <Scroller contained={true} direction="row">
+                    <Flex fillWidth gap="2">
+                        {buttons.map((button, index) => {
+                            let label: string | undefined;
+                            let children: React.ReactNode = undefined;
+
+                            if (typeof button.label === 'string') {
+                                label = button.label;
+                            } else {
+                                children = button.label;
+                            }
+
+                            return (
+                                <ToggleButton
+                                    key={button.value}
+                                    label={label}
+                                    value={button.value}
+                                    selected={index === selectedIndex}
+                                    onClick={() => handleButtonClick(button)}
+                                    prefixIcon={button.prefixIcon}
+                                    suffixIcon={button.suffixIcon}
+                                    width="fill"
+                                    aria-pressed={index === selectedIndex}
+                                >
+                                    {children}
+                                </ToggleButton>
+                            );
+                        })}
+                    </Flex>
+                </Scroller>
+            </Flex>
         </Flex>
     );
 };
 
-SegmentedControl.displayName = "SegmentedControl";
+SegmentedControl.displayName = 'SegmentedControl';
 
 export { SegmentedControl };
 export type { SegmentedControlProps, ButtonOption };

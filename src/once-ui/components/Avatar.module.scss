@@ -39,11 +39,9 @@
         }
     }
 
-    .truncate {
+    .value {
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 2ch;
         user-select: none;
     }
 }
@@ -57,6 +55,6 @@
 }
 
 .image {
-    border-radius: var(--radius-999);
+    border-radius: var(--radius-full);
     object-position: center;
 }

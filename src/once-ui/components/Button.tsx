@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ReactNode, forwardRef } from 'react';
 import Link from 'next/link';
 
@@ -5,9 +7,10 @@ import { Spinner, Icon } from '.';
 import styles from './Button.module.scss';
 
 interface CommonProps {
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger';
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'custom-primary';
     size?: 's' | 'm' | 'l';
     label?: string;
+    labelExists?: boolean
     prefixIcon?: string;
     suffixIcon?: string;
     loading?: boolean;
@@ -27,6 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(({
     variant = 'primary',
     size = 'm',
     label,
+    labelExists,
     children,
     prefixIcon,
     suffixIcon,
@@ -38,15 +42,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(({
     ...props
 }, ref) => {
     const labelSize = size === 'l' ? 'font-l' : size === 'm' ? 'font-m' : 'font-s';
-    const iconSize = size === 'l' ? 'm' : 's';
-
-    const hasContent = label ?? children;
+    const iconSize = size === 'l' ? 'm' : size === 'm' ? 's' : 'xs';
 
     const content = (
         <>
-            {prefixIcon && !loading && !hasContent && <Icon name={prefixIcon} size={iconSize} />}
+            {prefixIcon && !loading && <Icon name={prefixIcon} size={iconSize} />}
             {loading && <Spinner size={size} />}
-            {hasContent && <div className={`font-label font-strong ${styles.label} ${labelSize} ${fillWidth ? styles.fillWidth : ''}`}>{label ?? children}</div>}
+            {label && <div className={`font-label font-strong ${styles.label} ${labelSize}`}>{label || children}</div>}
             {suffixIcon && <Icon name={suffixIcon} size={iconSize} />}
         </>
     );
@@ -62,10 +64,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(({
         if (isExternal) {
             return (
                 <a
-                    {...commonProps}
                     href={href}
+                    ref={ref as React.Ref<HTMLAnchorElement>}
                     target="_blank"
                     rel="noreferrer"
+                    {...commonProps}
                     {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
                     {content}
                 </a>
@@ -75,6 +78,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(({
         return (
             <Link
                 href={href}
+                ref={ref as React.Ref<HTMLAnchorElement>}
                 {...commonProps}
                 {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
                 {content}
@@ -84,7 +88,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(({
 
     return (
         <button
-            ref={ref}
+            ref={ref as React.Ref<HTMLButtonElement>}
             {...commonProps}
             {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
             {content}

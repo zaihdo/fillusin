@@ -10,12 +10,14 @@
     border-style: solid;
     background: var(--static-transparent);
     color: var(--neutral-on-background-strong);
+    transition: var(--transition-micro-medium);
     cursor: pointer;
 	user-select: none;
     white-space: nowrap;
   
     &:hover {
-        background: var(--neutral-alpha-medium);
+        background: var(--neutral-alpha-weak);
+        border-color: var(--neutral-alpha-medium);
     }
   
     &.selected {
@@ -35,19 +37,24 @@
 .labelWrapper {
     display: flex;
     align-items: center;
-    gap: var(--static-space-8)
+    gap: var(--static-space-8);
+    max-width: 100%;
 }
 
 .label {
-    padding: 0 var(--static-space-4);
+    padding: var(--static-space-4) var(--static-space-4);
+}
+
+.s {
+    padding: var(--static-space-2) var(--static-space-8);
 }
 
 .m {
-    padding: var(--static-space-8) var(--static-space-16);
+    padding: var(--static-space-4) var(--static-space-12);
 }
   
 .l {
-    padding: var(--static-space-12) var(--static-space-16);
+    padding: var(--static-space-8) var(--static-space-16);
 }
 
 .start {
@@ -64,4 +71,11 @@
   
 .fill {
     width: 100%;
-}  
+}
+
+.truncate {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

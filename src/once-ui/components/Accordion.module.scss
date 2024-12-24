@@ -1,0 +1,20 @@
+.accordion {
+    cursor: pointer;
+    transition: var(--transition-micro-medium);
+    background: var(--static-transparent);
+    border-radius: 25px;
+    background: var(--neutral-alpha-weak);
+
+    &:hover {
+        background: var(--static-transparent);
+    }
+
+}
+
+.border {
+    // border-top: 1px solid var(--neutral-border-medium);
+
+    &:first-of-type {
+        border: none;
+    }
+}
