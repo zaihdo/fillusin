@@ -6,15 +6,14 @@ import {
 	Flex,
 	Button,
 	Grid,
-	Icon,
 	LetterFx,
-	Arrow,
 	IconButton,
 	Accordion,
 } from "@/once-ui/components";
 import Link from "next/link";
 import { Header } from "@/once-ui/components/Header";
 import Campaigns from "@/components/campaigns";
+import "@styles/global.css";
 type Campaign = {
 	id: number;
 	title: string;
