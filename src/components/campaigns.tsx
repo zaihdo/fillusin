@@ -61,16 +61,10 @@ const Campaigns: React.FC<CampaignSectionProps> = ({ campaigns }) => {
 						border="neutral-weak"
 						borderStyle="solid-1"
 						radius="l"
-						background="surface">
+						background="surface"
+						className="h-full">
 						{/* Card Content */}
-						<div
-							style={{
-								width: "300px",
-								height: "200px",
-								position: "relative",
-								overflow: "hidden",
-								borderRadius: "32px",
-							}}>
+						<div className="w-[300px] h-[200px] relative overflow-hidden rounded-[32px]">
 							<Image
 								src={campaign.picture}
 								alt={campaign.name}
@@ -92,17 +86,7 @@ const Campaigns: React.FC<CampaignSectionProps> = ({ campaigns }) => {
 							label="Read more & Donate"
 							variant="custom-primary"
 							prefixIcon="/images/arrow-right.svg"
-							style={{
-								borderRadius: "32px",
-								border: "1px solid green",
-								color: "green",
-								fontWeight: "bold",
-								backgroundColor: "white",
-								paddingTop: "16px",
-								paddingBottom: "16px",
-								paddingLeft: "32px",
-								paddingRight: "32px",
-							}}></Button>
+							className="mt-auto rounded-[32px] border-[1px] border-green-500 text-green-500 font-bold bg-white py-4 px-8"></Button>
 					</Flex>
 				))}
 			</Grid>
