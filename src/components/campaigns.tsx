@@ -1,87 +1,113 @@
-"use client";
 import React from "react";
 import Image from "next/image";
-import { Flex, Heading, LetterFx } from "../once-ui/components";
-import CampaignCard from "./campaignCard";
+import {
+	Button,
+	Flex,
+	Grid,
+	Heading,
+	LetterFx,
+	Text,
+} from "../once-ui/components";
 
 type Campaign = {
-    id: number;
-    name: string;
-    title: string;
-    description: string;
-    link: string;
-    picture: string;
+	id: number;
+	name: string;
+	title: string;
+	description: string;
+	link: string;
+	picture: string;
 };
 
 interface CampaignSectionProps {
-    campaigns: Campaign[];
+	campaigns: Campaign[];
 }
 
 const Campaigns: React.FC<CampaignSectionProps> = ({ campaigns }) => {
-    const scroll = (direction: "left" | "right") => {
-        const container = document.querySelector(".campaigns-container");
-        if (container) {
-            const cardWidth =
-                container.querySelector("div")?.getBoundingClientRect().width || 0;
-            const scrollAmount =
-                direction === "left" ? -cardWidth * 4 : cardWidth * 4;
-            container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-        }
-    };
+	return (
+		<section>
+			{/* Header Section */}
+			<Flex
+				direction="column"
+				justifyContent="flex-start"
+				alignItems="flex-start"
+				gap="l"
+				padding="8">
+				<Heading
+					align="center"
+					paddingTop="32"
+					marginTop="32"
+					wrap="balance"
+					variant="heading-default-xl">
+					<span className="font-code">
+						<LetterFx trigger="instant">
+							Extreme Need Palestinians - Gazans
+						</LetterFx>
+					</span>
+				</Heading>
+			</Flex>
 
-    return (
-        <section className="w-full">
-            {/* Header Section */}
-            <Flex
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                padding="16"
-                marginY="8">
-                <Heading align="center" wrap="balance" variant="heading-default-xl">
-                    <span className="font-code text-[42px]">
-                        <LetterFx trigger="instant">
-                            Extreme Need Palestinians - Gazans
-                        </LetterFx>
-                    </span>
-                </Heading>
-                {/* Arrow Icons */}
-                <div className="flex gap-4">
-                    <button onClick={() => scroll("left")}>
-                        <Image
-                            src="/images/arrow-left-circle.svg"
-                            alt="Scroll Left"
-                            width={53}
-                            height={53}
-                        />
-                    </button>
-                    <button onClick={() => scroll("right")}>
-                        <Image
-                            src="/images/arrow-right-circle.svg"
-                            alt="Scroll Right"
-                            width={53}
-                            height={53}
-                        />
-                    </button>
-                </div>
-            </Flex>
-
-            {/* Cards Section */}
-            <div
-                className="campaigns-container w-[95vw] flex gap-4 overflow-x-auto scroll-smooth"
-                style={{
-                    scrollSnapType: "x mandatory",
-                    overflowX: "auto",
-                    WebkitOverflowScrolling: "touch",
-                    scrollbarWidth: "none",
-                    msOverflowStyle: "none",
-                }}>
-                {campaigns.map((campaign) => (
-                    <CampaignCard key={campaign.id} campaign={campaign} />
-                ))}
-            </div>
-        </section>
-    );
+			{/* Cards Section */}
+			<Grid
+				columns="repeat(auto-fill, minmax(300px, 1fr))"
+				gap="s"
+				padding="8"
+				style={{ justifyItems: "center" }}>
+				{campaigns.map((campaign) => (
+					<Flex
+						key={campaign.id}
+						direction="column"
+						gap="s"
+						padding="s"
+						border="neutral-weak"
+						borderStyle="solid-1"
+						radius="l"
+						background="surface">
+						{/* Card Content */}
+						<div
+							style={{
+								width: "300px",
+								height: "200px",
+								position: "relative",
+								overflow: "hidden",
+								borderRadius: "32px",
+							}}>
+							<Image
+								src={campaign.picture}
+								alt={campaign.name}
+								layout="fill"
+								objectFit="cover"
+							/>
+						</div>
+						<Heading
+							align="left"
+							paddingTop="32"
+							marginTop="32"
+							wrap="balance"
+							variant="heading-default-xl">
+							<span className="font-code">{campaign.title}</span>
+						</Heading>
+						<Text style={{ color: "#007A3D" }}>{campaign.name}</Text>
+						<p className="text-lg font-normal">{campaign.description}</p>
+						<Button
+							label="Read more & Donate"
+							variant="custom-primary"
+							prefixIcon="/images/arrow-right.svg"
+							style={{
+								borderRadius: "32px",
+								border: "1px solid green",
+								color: "green",
+								fontWeight: "bold",
+								backgroundColor: "white",
+								paddingTop: "16px",
+								paddingBottom: "16px",
+								paddingLeft: "32px",
+								paddingRight: "32px",
+							}}></Button>
+					</Flex>
+				))}
+			</Grid>
+		</section>
+	);
 };
 
 export default Campaigns;
