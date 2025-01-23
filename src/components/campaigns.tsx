@@ -79,8 +79,8 @@ const Campaigns: React.FC<CampaignSectionProps> = ({ campaigns }) => {
 					<Flex
 						key={campaign.id}
 						direction="column"
-						gap="s"
 						padding="s"
+						gap="s"
 						border="neutral-weak"
 						borderStyle="solid-1"
 						radius="l"
@@ -100,12 +100,7 @@ const Campaigns: React.FC<CampaignSectionProps> = ({ campaigns }) => {
 								className="object-cover"
 							/>
 						</div>
-						<Heading
-							align="left"
-							paddingTop="32"
-							marginTop="32"
-							wrap="balance"
-							variant="heading-default-xl">
+						<Heading align="left" wrap="balance" variant="heading-default-xl">
 							<span className="font-code">{campaign.title}</span>
 						</Heading>
 						<Text style={{ color: "#007A3D" }}>{campaign.name}</Text>
