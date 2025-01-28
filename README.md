@@ -46,3 +46,9 @@ Grab a copy from the [Figma Community](https://figma.com/).
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/76DR9Q?referralCode=QW2HBC)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fnextjs-starter&redirect-url=https%3A%2F%2Fonce-ui.com%2Fdocs%2F)
+
+
+TO RUN:
+
+1) npm install > to install latest dependencies
+2) npm run dev
