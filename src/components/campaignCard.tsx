@@ -46,12 +46,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
             <Text style={{ color: "#007A3D" }}>{campaign.name}</Text>
             <p className="text-lg font-normal">
                 {campaign.description.length > 250
-                    ? <>
-                    {`${campaign.description.substring(0, 250)}...`}
-                    <a href={campaign.link}
-                    target="_blank"
-                    rel="noopener noreferrer"><b>Read More</b></a>
-                  </>                  
+                    ? `${campaign.description.substring(0, 250)}...`
                     : campaign.description}
             </p>
             <div className="mt-auto">
