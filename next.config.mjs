@@ -1,8 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ["i.ibb.co", "images.gofundme.com"], // Add the domain from which you're fetching images
+	  remotePatterns: [
+		{
+		  protocol: 'https',
+		  hostname: 'i.ibb.co',
+		},
+		{
+		  protocol: 'https',
+		  hostname: 'images.gofundme.com',
+		},
+	  ],
 	},
-};
-
-export default nextConfig;
+  };
+  
+  export default nextConfig;
