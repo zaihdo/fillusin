@@ -9,6 +9,7 @@ import {
 	LetterFx,
 	IconButton,
 	Accordion,
+	Icon,
 } from "@/once-ui/components";
 import Link from "next/link";
 import { Header } from "@/once-ui/components/Header";
@@ -150,7 +151,7 @@ export default async function Home() {
 								style={{ borderRadius: 32 }}></Button>
 						</Flex>
 					</Flex>
-
+				
 					<Flex
 						radius="xl"
 						background="accent-strong"
@@ -172,12 +173,15 @@ export default async function Home() {
 							padding="24"
 							fillWidth
 							radius="xl"
-							background="accent-strong">
+							background="accent-strong"
+							mobileColumns="1col"
+							>
 							<Flex
 								alignItems="center"
 								justifyContent="center"
 								padding="20"
 								style={{ flexDirection: "column" }}>
+								<img src="/images/Frame 31.png" width={"200"} height={"100"} />
 								<Heading
 									align="center"
 									wrap="balance"
@@ -195,6 +199,7 @@ export default async function Home() {
 								justifyContent="center"
 								padding="20"
 								style={{ flexDirection: "column" }}>
+								<img src="/images/Frame 32.png" width={"200"} height={"100"} />
 								<Heading
 									align="center"
 									wrap="balance"
@@ -212,7 +217,7 @@ export default async function Home() {
 								justifyContent="center"
 								padding="20"
 								style={{ flexDirection: "column" }}>
-								<img src="/images/final.svg" width={"200"} height={"100"} />
+								<img src="/images/Frame 33.png" width={"200"} height={"100"} />
 								<Heading
 									align="center"
 									wrap="balance"
@@ -228,13 +233,16 @@ export default async function Home() {
 						</Grid>
 					</Flex>
 
-					<Campaigns campaigns={campaigns} />
+					<Flex marginTop='32'>
+						<Campaigns campaigns={campaigns} />
+					</Flex>
 
 					<Flex
 						flex={1}
 						fillWidth
 						padding="s"
 						gap="32"
+						marginTop='32'
 						// justifyContent="space-between"
 						mobileDirection="column"
 						alignItems="flex-start">
