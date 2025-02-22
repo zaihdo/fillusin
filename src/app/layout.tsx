@@ -113,16 +113,19 @@ export default function RootLayout({
 				<Background
 					style={{zIndex: '-1'}}
 					position="fixed"
-					mask="cursor"
-					dots={{
-						display: true,
-						opacity: 0.4,
-						size: '20'
-					}}
-					gradient={{
-						display: true,
-						opacity: 0.4,
-					}}/>
+					// mask="cursor"
+          dots={true}
+					// dots={{
+					// 	display: true,
+					// 	opacity: 0.4,
+					// 	size: '20'
+					// }}
+          gradient={true}
+					// gradient={{
+					// 	display: true,
+					// 	opacity: 0.4,
+					// }}
+          />
 				<Flex
 					flex={1} direction="column">
 					{children}

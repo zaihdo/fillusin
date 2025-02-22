@@ -2,10 +2,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
 
-import React from 'react';
-
-import { Heading, Text, Flex, Button, Grid, Icon } from '@/once-ui/components';
-import Link from 'next/link';
 import React from "react";
 import Image from "next/image";
 import {
@@ -85,10 +81,7 @@ export default async function Home() {
 				maxWidth={100}
 				direction="column"
 				alignItems="center"
-				minHeight={1}
-				flex={1}
-				as="section"
-				maxWidth={64}>
+				flex={1}>
 				<Flex
 					style={{zIndex: '1', width: '95%'}}
 					position="relative"
@@ -127,7 +120,6 @@ export default async function Home() {
 						from the individuals.
 					</Text>
 				</Flex>
-				flex={1}>
 				<Flex
 					as="main"
 					padding="m"
@@ -135,7 +127,7 @@ export default async function Home() {
 					justifyContent="center"
 					fillWidth
 					fillHeight
-					padding="s"
+					flex={1}
 					gap="m">
 					<Header authenticated={false} />
 
