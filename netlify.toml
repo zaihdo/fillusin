@@ -5,7 +5,7 @@
 
 # Thhe following build settings are for static rendering
 [build]
-  command = "next build && next export"
+  command = "next build"
   publish = "out"
 
 # To prevent Netlify Nextjs System edge function from running
