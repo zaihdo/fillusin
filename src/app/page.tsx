@@ -15,6 +15,7 @@ import Link from "next/link";
 import { Header } from "@/once-ui/components/Header";
 import Campaigns from "@/components/campaigns";
 import "@styles/global.css";
+import Card from "@/components/statisticCard";
 type Campaign = {
 	id: number;
 	title: string;
@@ -181,6 +182,11 @@ export default async function Home() {
 								justifyContent="center"
 								padding="20"
 								style={{ flexDirection: "column" }}>
+									<Card statistic={{
+									title: "+1 year",
+									description: "Continuous war started in Oct 7th and have caused over +40,000 killed humans",
+									picture: "/images/Union-7.png"
+								}}/>
 								<img src="/images/Frame 31.png" width={"200"} height={"100"} />
 								<Heading
 									align="center"
