@@ -360,10 +360,10 @@ export default async function Home() {
 				paddingY="m"
 				justifyContent="space-between">
 				<Text variant="body-default-s" onBackground="neutral-weak">
-					© 2024 Once UI,{" "}
-					<Link href="https://github.com/once-ui-system/nextjs-starter?tab=MIT-1-ov-file">
+					© 2025 Fill Us In,{" "}
+					{/* <Link href="https://github.com/once-ui-system/nextjs-starter?tab=MIT-1-ov-file"> */}
 						MIT License
-					</Link>
+					{/* </Link> */}
 				</Text>
 				<Flex gap="12">
 					<Button

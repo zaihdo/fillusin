@@ -1,0 +1,16 @@
+# The following build settings are for server side rendering (SSR)
+[build] 
+  publish = ".next"
+  command = "npm run build"
+
+# Thhe following build settings are for static rendering
+# [build]
+#   command = "next build"
+#   publish = "out"
+
+# To prevent Netlify Nextjs System edge function from running
+# [build.environment]
+#   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
