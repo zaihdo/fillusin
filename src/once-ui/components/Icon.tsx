@@ -1,10 +1,9 @@
-"use client";
+'use client';
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
-
-import { iconLibrary } from '../icons';
 import { IconType } from 'react-icons';
+import { iconLibrary } from '../icons';
 import { ColorScheme, ColorWeight } from '../types';
 
 const sizeMap: Record<string, string> = {
@@ -17,21 +16,23 @@ const sizeMap: Record<string, string> = {
 
 type IconProps = {
     name: string;
-    className?: string;
-    size?: 'xs' | 's' | 'm' | 'l' | 'xl';
     onBackground?: `${ColorScheme}-${ColorWeight}`;
     onSolid?: `${ColorScheme}-${ColorWeight}`;
+    size?: 'xs' | 's' | 'm' | 'l' | 'xl';
+    decorative?: boolean;
+    className?: string;
     style?: React.CSSProperties;
 };
 
-const Icon: React.FC<IconProps> = ({
+const Icon = forwardRef<HTMLDivElement, IconProps>(({
     name,
     onBackground,
     onSolid,
     size = 'm',
+    decorative = true,
     className,
     style,
-}) => {
+}, ref) => {
     const IconComponent: IconType | undefined = iconLibrary[name];
 
     if (!IconComponent) {
@@ -54,11 +55,18 @@ const Icon: React.FC<IconProps> = ({
     }
 
     return (
-        <IconComponent
+        <span
+            ref={ref}
             className={classNames(colorClass, className)}
-            style={{ fontSize: sizeMap[size], ...style }}
-            aria-label={name}/>
+            style={{ display: 'contents', fontSize: sizeMap[size], ...style }}
+            role={decorative ? "presentation" : undefined}
+            aria-hidden={decorative ? "true" : undefined}
+            aria-label={decorative ? undefined : name}>
+            <IconComponent />
+        </span>
     );
-};
+});
+
+Icon.displayName = 'Icon';
 
 export { Icon };

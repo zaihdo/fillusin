@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React from 'react';
 import { createPortal } from 'react-dom';
@@ -21,6 +21,7 @@ const Toaster: React.FC<ToasterProps> = ({
     removeToast }) => {
     return createPortal(
         <Flex
+            zIndex={11}
             fillWidth
             direction="column"
             maxWidth={32}

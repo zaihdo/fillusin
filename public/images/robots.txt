@@ -1,5 +1,0 @@
-# Allow all web crawlers to index everything except certain directories
-User-agent: *
-Disallow: /config/
-Disallow: /admin/
-Disallow: /private/

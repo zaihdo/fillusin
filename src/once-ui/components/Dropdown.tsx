@@ -1,17 +1,16 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect, KeyboardEvent, ReactNode, forwardRef, HTMLAttributes } from 'react';
+import React, { useState, useRef, useEffect, KeyboardEvent, ReactNode, forwardRef, HTMLAttributes, useImperativeHandle } from 'react';
 import classNames from 'classnames';
-
 import { Flex, Text } from '.';
 import styles from './Dropdown.module.scss';
 
 interface DropdownOptions {
-    label: string;
+    label: React.ReactNode;
     value: string;
     hasPrefix?: React.ReactNode;
     hasSuffix?: React.ReactNode;
-    description?: string;
+    description?: React.ReactNode;
     dividerAfter?: boolean;
     danger?: boolean;
 }
@@ -32,12 +31,14 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(({
     className,
     children,
     onEscape,
-    ...props },
-    ref) => {
+    ...props
+}, ref) => {
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
     const [typedChars, setTypedChars] = useState<string>('');
-    const dropdownRef = useRef<HTMLDivElement>(null);
+    const internalRef = useRef<HTMLDivElement>(null);
     const typingTimeoutRef = useRef<number | null>(null);
+
+    useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         if (focusedIndex === null) {
@@ -70,8 +71,8 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(({
     };
 
     useEffect(() => {
-        if (dropdownRef.current && focusedIndex !== null) {
-            const focusedOption = dropdownRef.current.querySelectorAll<HTMLElement>('.' + styles.option)[focusedIndex];
+        if (internalRef.current && focusedIndex !== null) {
+            const focusedOption = internalRef.current.querySelectorAll<HTMLElement>('.' + styles.option)[focusedIndex];
             if (focusedOption) {
                 focusedOption.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 focusedOption.focus();
@@ -81,7 +82,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(({
 
     useEffect(() => {
         if (typedChars.length > 0) {
-            const matchIndex = options.findIndex(option => option.label.toLowerCase().startsWith(typedChars.toLowerCase()));
+            const matchIndex = options.findIndex(option => option.value.toLowerCase().startsWith(typedChars.toLowerCase()));
             if (matchIndex !== -1) {
                 setFocusedIndex(matchIndex);
             }
@@ -95,13 +96,13 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(({
     }, [typedChars, options]);
 
     useEffect(() => {
-        if (dropdownRef.current && selectedOption !== undefined) {
-            const selectedIndex = options.findIndex(option => option.label === selectedOption);
+        if (internalRef.current && selectedOption !== undefined) {
+            const selectedIndex = options.findIndex(option => option.value === selectedOption);
             if (selectedIndex !== -1) {
                 setFocusedIndex(selectedIndex);
-                const selectedOptionElement = dropdownRef.current.querySelectorAll<HTMLElement>('.' + styles.option)[selectedIndex];
+                const selectedOptionElement = internalRef.current.querySelectorAll<HTMLElement>('.' + styles.option)[selectedIndex];
                 if (selectedOptionElement) {
-                    selectedOptionElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    selectedOptionElement.scrollIntoView({ behavior: 'auto', block: 'nearest' });
                 }
             }
         }
@@ -109,6 +110,8 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(({
 
     return (
         <Flex
+            flex={1}
+            overflowY="auto"
             direction="column"
             padding="4"
             border="neutral-medium"
@@ -117,10 +120,11 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(({
             background="surface"
             gap="2"
             minWidth={12}
-            className={classNames(styles.dropdown, className)}
+            className={classNames(styles.dropdown, className || '')}
             tabIndex={0}
             onKeyDown={handleKeyDown}
-            ref={ref || dropdownRef}
+            ref={internalRef}
+            role="listbox"
             {...props}>
             {children}
             {options.map((option, index) => (
@@ -131,42 +135,48 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(({
                         paddingY="8"
                         gap="12"
                         radius="m"
+                        role="option"
+                        aria-selected={selectedOption === option.value}
                         className={classNames(styles.option, {
                             [styles.focused]: focusedIndex === index,
-                            [styles.selected]: selectedOption === option.label,
+                            [styles.selected]: selectedOption === option.value,
                             [styles.danger]: option.danger,
                         })}
                         onClick={() => handleOptionClick(option)}
-                        onMouseEnter={() => handleOptionMouseEnter(index)}>
+                        onMouseEnter={() => handleOptionMouseEnter(index)}
+                        tabIndex={-1}
+                        data-value={option.value}>
                         {option.hasPrefix && <Flex className={styles.prefix}>{option.hasPrefix}</Flex>}
-                        <Flex style={{ whiteSpace: "nowrap" }}
-                            direction="column"
-                            className={styles.optionText}>
+                        <Flex style={{ whiteSpace: 'nowrap' }} direction="column" className={styles.optionText}>
                             <Text
-                                as="span"
                                 onBackground="neutral-strong"
                                 variant="label-default-s">
                                 {option.label}
                             </Text>
-                            {option.description && 
+                            {option.description && (
                                 <Text
-                                    as="span"
                                     variant="body-default-xs"
                                     onBackground="neutral-weak">
                                     {option.description}
                                 </Text>
-                            }
+                            )}
                         </Flex>
-                        {option.hasSuffix && <Flex className={styles.suffix}>{option.hasSuffix}</Flex>}
+                        {option.hasSuffix &&
+                            <Flex className={styles.suffix}>
+                                {option.hasSuffix}
+                            </Flex>
+                        }
                     </Flex>
-                    {option.dividerAfter && <div className={styles.divider} />}
+                    {option.dividerAfter &&
+                        <div className={styles.divider}/>
+                    }
                 </React.Fragment>
             ))}
         </Flex>
     );
 });
 
-Dropdown.displayName = "Dropdown";
+Dropdown.displayName = 'Dropdown';
 
 export { Dropdown };
 export type { DropdownOptions, DropdownProps };

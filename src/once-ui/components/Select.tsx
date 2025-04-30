@@ -1,34 +1,33 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import classNames from 'classnames';
-
-import { Icon, Dropdown, Input, InputProps } from '.';
+import { DropdownWrapper, Input, InputProps } from '.';
 import { DropdownOptions } from '.';
 import inputStyles from './Input.module.scss';
-import styles from './Select.module.scss';
 
 interface SelectProps extends Omit<InputProps, 'onSelect' | 'value'> {
     options: DropdownOptions[];
     value: string;
+    style?: React.CSSProperties;
     onSelect: (option: DropdownOptions) => void;
     renderDropdownOptions?: (option: DropdownOptions) => React.ReactNode;
     renderCustomDropdownContent?: () => React.ReactNode;
 }
 
-const Select: React.FC<SelectProps> = ({
+const Select = forwardRef<HTMLDivElement, SelectProps>(({
     options,
     value,
+    style,
     onSelect,
     renderDropdownOptions,
     renderCustomDropdownContent,
     ...inputProps
-}) => {
+}, ref) => {
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(!!value);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
-    const dropdownRef = useRef<HTMLDivElement>(null);
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
         setIsFocused(true);
@@ -55,15 +54,7 @@ const Select: React.FC<SelectProps> = ({
         setIsFilled(true);
     };
 
-    const handleEscape = () => {
-        setIsDropdownOpen(false);
-    };
-
     useEffect(() => {
-        if (isDropdownOpen && dropdownRef.current) {
-            dropdownRef.current.focus();
-        }
-
         const handleClickOutside = (event: MouseEvent) => {
             if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
                 setIsDropdownOpen(false);
@@ -77,35 +68,32 @@ const Select: React.FC<SelectProps> = ({
     }, [isDropdownOpen]);
 
     return (
-        <div className={classNames(inputStyles.wrapper, inputProps.className)} ref={selectRef}>
+        <DropdownWrapper
+            ref={selectRef}
+            dropdownOptions={options}
+            dropdownProps={{
+                onOptionSelect: handleSelect
+            }}
+            renderCustomDropdownContent={renderCustomDropdownContent}>
             <Input
                 {...inputProps}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', textOverflow: 'ellipsis', ...style }}
                 value={value}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 readOnly
-                hasSuffix={<Icon style={{ pointerEvents: 'none' }} name="chevronDown" size="m" />}
                 className={classNames({
                     [inputStyles.filled]: isFilled,
                     [inputStyles.focused]: isFocused,
-                })}/>
-            {isDropdownOpen && (
-                <Dropdown
-                    style={{ maxHeight: '24rem' }}
-                    options={options}
-                    onOptionSelect={handleSelect}
-                    className={`${styles.dropdown} ${styles.top} ${styles.fixed}`}
-                    selectedOption={value || undefined}
-                    ref={dropdownRef}
-                    onEscape={handleEscape}>
-                    {renderCustomDropdownContent && renderCustomDropdownContent()}
-                </Dropdown>
-            )}
-        </div>
+                })}
+                aria-haspopup="listbox"
+                aria-expanded={isDropdownOpen}
+            />
+        </DropdownWrapper>
     );
-};
+});
 
-Select.displayName = "Select";
+Select.displayName = 'Select';
 
 export { Select };
+export type { SelectProps };
