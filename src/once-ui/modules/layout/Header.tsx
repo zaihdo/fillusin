@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({
                 show="s"
                 gap="4"
                 alignItems="center">
-                <NavIcon/>
+                <NavIcon links={[]}/>
                 <Logo wordmark={false}/>
             </Flex>
             {authenticated ? (
