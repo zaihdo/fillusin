@@ -304,7 +304,7 @@ export default async function Home() {
 							justifyContent="center"
 							padding="20"
 							style={{ flexDirection: "column" }}>
-							<img src="/images/final.svg" width={"200"} height={"100"} />
+							<img src="/images/logo.svg" width={"200"} height={"100"} />
 							<Heading
 								align="center"
 								wrap="balance"

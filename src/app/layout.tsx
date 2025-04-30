@@ -48,6 +48,14 @@ export async function generateMetadata(): Promise<Metadata> {
 			title: og.title,
 			description: og.description,
 			url: 'https://' + baseURL,
+			images: [
+				{
+					url: og.image,
+					width: 800,
+					height: 600,
+					alt: og.title,
+				},
+			],
 			type: og.type as
 				| "website"
 				| "article"
@@ -63,6 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
 				| "video.other",
 		},
 		metadataBase,
+		keywords: meta.keywords,
 	};
 }
 
