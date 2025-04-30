@@ -26,6 +26,7 @@ import {
 	FaFacebook,
 	FaGithub,
 	FaInstagram,
+	FaLinkedinIn,
 	FaTiktok,
 	FaTwitter,
 	FaYoutube
@@ -57,4 +58,5 @@ export const iconLibrary: Record<string, IconType> = {
 	arrowUpRight: HiArrowUpRight,
 	minus: HiMiniMinus,
 	plus: HiMiniPlus,
+	linkedin: FaLinkedinIn
 };
