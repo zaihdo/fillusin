@@ -27,6 +27,12 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
 	const pathname = usePathname() ?? "";
 
+	const links = [
+		{ linkUrl: './#mission', linkText: 'Mission' },
+		{ linkUrl: './#campaigns', linkText: 'Cases' },
+		{ linkUrl: './#faq', linkText: 'FAQ' },
+	  ];
+
 	return (
 		<Flex
 			style={{
@@ -38,11 +44,11 @@ const Header: React.FC<HeaderProps> = ({
 			height="56"
 			alignItems="center"
 			background="neutral-weak">
-			<Flex hide="s">
+			<Flex >
 				<Logo size="xl" iconSrc="/images/logo-75.svg" wordmark={false} />
 			</Flex>
 			<Flex show="s" hide="m" gap="4" alignItems="center">
-				{/* <NavIcon isActive={false} /> */}
+				{/* <NavIcon links={links}/> */}
 				{/* <Logo wordmark={false} /> */}
 			</Flex>
 			{authenticated ? (
@@ -120,9 +126,8 @@ const Header: React.FC<HeaderProps> = ({
 						gap="32"
 						paddingX="xl"
 						alignItems="center">
-						<SmartLink href="./#mission">What we do</SmartLink>
+						<SmartLink href="./#mission">Mission</SmartLink>
 						<SmartLink href="./#campaigns">Cases</SmartLink>
-						{/* <SmartLink href="">Statistics</SmartLink> */}
 						<SmartLink href="./#faq">FAQ</SmartLink>
 					</Flex>
 					<Flex alignItems="center" gap="8">
