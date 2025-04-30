@@ -97,15 +97,7 @@ export default async function Home() {
 							marginBottom="104"
 							justifyContent="center"
 							alignItems="center"
-							direction="column">
-							{/* <InlineCode
-								className="shadow-m"
-								style={{
-									width: 'fit-content',
-									padding: 'var(--static-space-8) var(--static-space-16)',
-									backdropFilter: 'blur(var(--static-space-1))'}}>
-								Start by editing <span className="brand-on-background-medium">app/page.tsx</span>
-							</InlineCode> */}
+							direction="column">						
 							<Heading
 								align="center"
 								paddingTop="32"
@@ -143,12 +135,12 @@ export default async function Home() {
 							</Heading>
 
 							<Button
-								size="l"
-								id="readDocs"
-								href="https://once-ui.com/docs"
-								variant="custom-primary"
-								label="Donate Now"
-								style={{ borderRadius: 32 }}></Button>
+							  size="l"
+							  id="readDocs"
+							  href="#campaigns"
+							  variant="custom-primary"
+							  label="Donate Now"
+							  style={{ borderRadius: 32 }}></Button>
 						</Flex>
 					</Flex>
 				
@@ -157,7 +149,8 @@ export default async function Home() {
 						background="accent-strong"
 						direction="column"
 						gap="24"
-						padding="24">
+						padding="24"
+						id="mission">
 						<Heading align="center" wrap="balance" variant="display-default-s">
 							<span className="font-code">
 								<LetterFx trigger="instant">
@@ -233,7 +226,7 @@ export default async function Home() {
 						</Grid>
 					</Flex>
 
-					<Flex marginTop='32'>
+					<Flex marginTop='32' id='campaigns'>
 						<Campaigns campaigns={campaigns} />
 					</Flex>
 
@@ -243,10 +236,9 @@ export default async function Home() {
 						padding="s"
 						gap="32"
 						marginTop='32'
-						// justifyContent="space-between"
 						mobileDirection="column"
 						alignItems="flex-start">
-						<Flex flex={1} direction="column" justifyContent="center">
+						<Flex flex={1} direction="column" justifyContent="center" id="faq">
 							<Heading align="left" wrap="balance" variant="display-strong-l">
 								<span className="font-code">
 									<LetterFx trigger="instant">Frequently asked</LetterFx>
@@ -322,7 +314,7 @@ export default async function Home() {
 									Join us on a mission to bring back the Ansar project
 								</span>
 							</Heading>
-							<Flex gap="8" padding="4">
+							{/* <Flex gap="8" padding="4">
 								<IconButton
 									// onClick={k}
 									icon="instagram"
@@ -347,7 +339,7 @@ export default async function Home() {
 									tooltipPosition="top"
 									variant="primary"
 								/>
-							</Flex>
+							</Flex> */}
 						</Flex>
 					</Grid>
 				</Flex>
@@ -367,15 +359,15 @@ export default async function Home() {
 				</Text>
 				<Flex gap="12">
 					<Button
-						href="https://github.com/once-ui-system/nextjs-starter"
+						href="https://github.com/zaihdo"
 						prefixIcon="github"
 						size="s"
 						variant="tertiary">
 						GitHub
 					</Button>
 					<Button
-						href="https://discord.com/invite/5EyAQ4eNdS"
-						prefixIcon="discord"
+						href="https://www.linkedin.com/in/zaidhimran/"
+						prefixIcon="linkedin"
 						size="s"
 						variant="tertiary">
 						Discord

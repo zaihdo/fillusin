@@ -41,9 +41,9 @@ const Header: React.FC<HeaderProps> = ({
 			<Flex hide="s">
 				<Logo size="xl" iconSrc="/images/logo-75.svg" wordmark={false} />
 			</Flex>
-			<Flex show="s" gap="4" alignItems="center">
-				<NavIcon />
-				<Logo wordmark={false} />
+			<Flex show="s" hide="m" gap="4" alignItems="center">
+				{/* <NavIcon isActive={false} /> */}
+				{/* <Logo wordmark={false} /> */}
 			</Flex>
 			{authenticated ? (
 				<Flex fillWidth alignItems="center" justifyContent="space-between">
@@ -63,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({
 						</Flex>
 					</Flex>
 					<Flex as="nav">
-						<Flex hide="s">
+						<Flex show="s">
 							<UserMenu
 								name={name}
 								subline={subline}
@@ -120,10 +120,10 @@ const Header: React.FC<HeaderProps> = ({
 						gap="32"
 						paddingX="xl"
 						alignItems="center">
-						<SmartLink href="">What we do</SmartLink>
-						<SmartLink href="">Cases</SmartLink>
-						<SmartLink href="">Statistics</SmartLink>
-						<SmartLink href="">FAQ</SmartLink>
+						<SmartLink href="./#mission">What we do</SmartLink>
+						<SmartLink href="./#campaigns">Cases</SmartLink>
+						{/* <SmartLink href="">Statistics</SmartLink> */}
+						<SmartLink href="./#faq">FAQ</SmartLink>
 					</Flex>
 					<Flex alignItems="center" gap="8">
 						<Button
@@ -131,7 +131,7 @@ const Header: React.FC<HeaderProps> = ({
 							variant="primary"
 							labelExists={true}
 							label="Donate directly to the beneficiary"
-							href=""
+							href="./#campaigns"
 						/>
 					</Flex>
 				</Flex>
